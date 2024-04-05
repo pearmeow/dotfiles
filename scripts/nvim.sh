@@ -23,3 +23,4 @@ export NVM_DIR="$HOME/.nvm"
 sudo nvm install node
 
 git clone git@github.com:PearMeow/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+source ~/.zshrc

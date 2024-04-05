@@ -32,5 +32,5 @@ scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share
 
 #themes & misc settings
 mkdir -p ~/.config/alacritty/themes/
-cp ~/settings/alacritty.toml ~/.config/alacritty/
-cp ~/settings/snazzy.toml ~/.config/alacritty/themes/
+cp ~/settings/themes/alacritty.toml ~/.config/alacritty/
+cp ~/settings/themes/snazzy.toml ~/.config/alacritty/themes/

@@ -1,7 +1,7 @@
 #! bin/bash
 
 #get font - for windows terminal gotta change it manually
-sudo cp ../DejaVuSansMNerdFontMono-Regular.ttf /usr/share/fonts/
+sudo cp ~/settings/fonts/DejaVuSansMNerdFontMono-Regular.ttf /usr/share/fonts/
 sudo fc-cache -f -v
 
 #zsh
@@ -13,3 +13,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugi
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
 cp ~/settings/.zshrc ~/.zshrc
+source ~/.zshrc
