@@ -30,7 +30,7 @@ ZSH_THEME="agnoster"
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+ zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -71,7 +71,7 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found fzf-tab)
+plugins=(git command-not-found fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -105,7 +105,7 @@ fi
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 alias clip="xclip -selection clipboard"
 alias ls='lsd'
-alias vim="/usr/bin/nvim"
+alias vim="nvim"
 alias cat="batcat --paging=never"
 
 export NVM_DIR="$HOME/.nvm"
