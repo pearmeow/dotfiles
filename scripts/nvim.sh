@@ -11,7 +11,7 @@ cd ~/neovim && make clean
 #kickstart setup + treesitter + nodes
 sudo apt install make gcc ripgrep unzip
 sudo apt install npm
-npm install -g tree-sitter-cli
+sudo npm install -g tree-sitter-cli
 export NVM_DIR="$HOME/.nvm" && (
   git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
   cd "$NVM_DIR"

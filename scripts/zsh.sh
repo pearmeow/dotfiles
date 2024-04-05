@@ -1,7 +1,8 @@
 #! bin/bash
 
 #get font - for windows terminal gotta change it manually
-sudo cp ~/settings/fonts/DejaVuSansMNerdFontMono-Regular.ttf /usr/share/fonts/
+sudo mkdir -p /usr/share/fonts/truetype/dejavu/
+sudo cp ~/settings/fonts/DejaVuSansMNerdFontMono-Regular.ttf /usr/share/fonts/truetype/dejavu/
 sudo fc-cache -f -v
 
 #zsh
