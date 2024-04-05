@@ -1,7 +1,7 @@
 #! bin/bash
 
-#yes, duplicate curl installation just to make sure
-sudo apt-get install ninja-build gettext cmake unzip curl build-essential
+#yes, duplicate curl installation if this script is run by itself
+sudo apt-get install ninja-build gettext cmake unzip curl build-essential libstdc++-12-dev
 
 git clone https://github.com/neovim/neovim.git ~/
 cd ~/neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
