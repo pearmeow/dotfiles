@@ -10,7 +10,7 @@ rustup override set stable
 rustup update stable
 
 #building alacritty
-sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip scdoc
+sudo pacman -S cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 gzip scdoc
 cargo build --release
 
 sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
@@ -32,5 +32,5 @@ scdoc < extra/man/alacritty-bindings.5.scd | gzip -c | sudo tee /usr/local/share
 
 #themes & misc settings
 sudo mkdir -p ~/.config/alacritty/themes/
-cp ~/settings/themes/alacritty.toml ~/.config/alacritty/
-cp ~/settings/themes/snazzy.toml ~/.config/alacritty/themes/
+sudo cp ~/settings/themes/alacritty.toml ~/.config/alacritty/
+sudo cp ~/settings/themes/snazzy.toml ~/.config/alacritty/themes/
