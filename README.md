@@ -1,9 +1,7 @@
 # settings
-ALL the settings (in case of loss)
+ALL the settings
 
 dependencies:
 
-https://github.com/alacritty/alacritty-theme
-https://github.com/neovim/neovim
+https://github.com/neovim/neovim and 
 https://github.com/ohmyzsh/ohmyzsh
-https://github.com/alacritty/alacritty
