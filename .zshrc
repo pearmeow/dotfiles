@@ -17,7 +17,7 @@ ZSH_THEME="agnoster"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
+
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
@@ -71,6 +71,8 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+source /usr/share/doc/pkgfile/command-not-found.zsh
+
 plugins=(git command-not-found fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -105,5 +107,6 @@ fi
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 alias clip="xclip -selection clipboard"
 alias ls='lsd'
+alias vi="nvim"
 alias vim="nvim"
 alias cat="bat --paging=never"
