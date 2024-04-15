@@ -86,7 +86,7 @@ setopt extendedglob
 # Add wisely, as too many plugins slow down shell startup.
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
-plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git command-not-found fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -123,4 +123,6 @@ alias ls='lsd'
 alias vi="nvim"
 alias vim="nvim"
 alias cat="bat --paging=never"
-
+alias logout="qdbus6 org.kde.Shutdown /Shutdown logout"
+alias reboot="qdbus6 org.kde.Shutdown /Shutdown logoutAndReboot"
+alias shutdown="qdbus6 org.kde.Shutdown /Shutdown logoutAndShutdown"
