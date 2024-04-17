@@ -1,0 +1,27 @@
+Good stuff
+window manager/compositor: i3
+taskbar: i3bar (temp)
+
+Minimal applications
+terminal emulator: alacritty
+file manager: thunar
+text editor: neovim
+
+Other components usually provided by desktop environments are:
+
+Desktop compositor (Xorg) : picom (config later)
+Notification daemon: dunst (config later)
+Display manager: sddm (config later)
+Screen locker: i3 (change later)
+Application launcher: rofi (config later)
+Audio control: alsamixer
+Backlight control: //////////////////////////WIP
+Media control: ///////////////////////WIP
+Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
+Power management: powertop + /////////////////WIP
+Screen capture: flameshot (exec --no-startup-id))
+# Really Don't Need This # Screen temperature: //////////////////WIP
+Wallpaper setter: ///////////////////////////WIP
+Logout dialogue: i3 (change later)
+Default applications:
+clipmenu (CM_LAUNCHER=rofi)
