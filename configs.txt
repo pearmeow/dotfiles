@@ -17,17 +17,17 @@ Application launcher: rofi (config later)
 Audio control: alsamixer (manual launch from terminal)
 Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
 Screen capture: flameshot (exec --no-startup-id))
+Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
 Logout dialogue: i3 (change later)
 
 Default applications:
 clipmenu (CM_LAUNCHER=rofi)
 
-WIP (Urgent):
+Seemingly unnecessary stuff:
 Backlight control:
 Media control:
 Power management: powertop
 Screen temperature:
-Wallpaper setter:
 
 Extra:
 conky
