@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #yes, duplicate curl installation if this script is run by itself
-sudo pacman -S ninja-build gettext cmake unzip curl build-essential libstdc++-12-dev
+sudo pacman -S ninja-build gettext cmake unzip curl
 
 cd ~/
 git clone https://github.com/neovim/neovim.git
