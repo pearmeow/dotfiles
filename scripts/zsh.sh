@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#get font - for windows terminal gotta change it manually
+#get font
 sudo cp ~/settings/fonts/DejaVuSansMNerdFontMono-Regular.ttf /usr/share/fonts/
 sudo fc-cache -f -v
 
