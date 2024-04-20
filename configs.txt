@@ -1,17 +1,13 @@
-Good stuff
 window manager: i3
-taskbar: i3bar (temp)
+taskbar: i3bar --> conky (later)
 
-Minimal applications
 terminal emulator: alacritty
 file manager: thunar
 text editor: neovim
 
-Other components usually provided by desktop environments:
-
 Desktop compositor (Xorg) : picom (config later)
 Notification daemon: dunst (config later)
-Display manager: sddm (config later)
+Display manager: sddm (where is my sddm theme theme)
 Screen locker: i3 (change later)
 Application launcher: rofi (config later)
 Audio control: alsamixer (manual launch from terminal)
@@ -23,11 +19,8 @@ Logout dialogue: i3 (change later)
 Default applications:
 clipmenu (CM_LAUNCHER=rofi)
 
-Seemingly unnecessary stuff:
-Backlight control:
-Media control:
-Power management: powertop
-Screen temperature:
-
-Extra:
-conky
+Seemingly unnecessary stuff: (get)
+Backlight control: (get)
+Media control: ncmpcpp for music (get)
+Power management: powertop (get)
+Screen temperature: (get)
