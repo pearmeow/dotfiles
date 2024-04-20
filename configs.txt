@@ -1,11 +1,11 @@
 window manager: i3
-taskbar: i3bar --> conky (later)
+taskbar: polybar using conky (later)
 
 terminal emulator: alacritty
 file manager: thunar
 text editor: neovim
 
-Desktop compositor (Xorg) : picom (config later)
+Desktop compositor (Xorg) : picom
 Notification daemon: dunst (config later)
 Display manager: sddm (where is my sddm theme theme)
 Screen locker: i3 (change later)
@@ -14,13 +14,13 @@ Audio control: alsamixer (manual launch from terminal)
 Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
 Screen capture: flameshot (exec --no-startup-id))
 Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
-Logout dialogue: i3 (change later)
+Logout dialogue: i3 shortcut
 
 Default applications:
-clipmenu (CM_LAUNCHER=rofi)
+clipmenu (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
 
-Seemingly unnecessary stuff: (get)
-Backlight control: (get)
+Seemingly unnecessary stuff:
+Backlight control: 
 Media control: ncmpcpp for music (get)
 Power management: powertop (get)
-Screen temperature: (get)
+Screen temperature: n/a
