@@ -1,4 +1,3 @@
-# settings
-ALL the settings - 
+Dotfiles
 
-Just run the scripts
+Very incomplete early version
