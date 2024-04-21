@@ -18,5 +18,6 @@ Logout dialogue: i3 shortcut
 Backlight control: light (aur, only for laptop)
 Media control: ncmpcpp for music (get)
 Power management: powertop (get)
-Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
+
+Clipboard: clipmenu or xsel?? (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
 
