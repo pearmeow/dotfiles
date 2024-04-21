@@ -15,12 +15,8 @@ Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
 Screen capture: flameshot (exec --no-startup-id))
 Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
 Logout dialogue: i3 shortcut
-
-Default applications:
-clipmenu (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
-
-Seemingly unnecessary stuff:
-Backlight control: 
+Backlight control: light (aur, only for laptop)
 Media control: ncmpcpp for music (get)
 Power management: powertop (get)
-Screen temperature: n/a
+Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
+
