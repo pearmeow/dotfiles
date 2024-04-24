@@ -1,12 +1,4 @@
-# Extensionless files & folders
-*
-!/**/
-!*.*
-**/*Zone.Identifier
-.vs
-.vscode
-build
-lmao
+# histfile
 .histfile
 
 # Prerequisites
