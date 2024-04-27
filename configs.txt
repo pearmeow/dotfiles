@@ -8,13 +8,13 @@ text editor: neovim
 Desktop compositor (Xorg) : picom
 Notification daemon: dunst (config later)
 Display manager: sddm (where is my sddm theme theme)
-Screen locker: i3 (change later)
-Application launcher: rofi (config later)
+Screen locker:
+Application launcher: dmenu
 Audio control: alsamixer (manual launch from terminal)
 Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
 Screen capture: flameshot (exec --no-startup-id))
 Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
-Logout dialogue: i3 shortcut
+Logout dialogue:
 Backlight control: light (aur, only for laptop)
 Media control: ncmpcpp for music (get)
 Power management: powertop (get)
