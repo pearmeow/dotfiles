@@ -123,6 +123,4 @@ alias ls='lsd'
 alias vi="nvim"
 alias vim="nvim"
 alias cat="bat --paging=never"
-alias logout="qdbus6 org.kde.Shutdown /Shutdown logout"
-alias reboot="qdbus6 org.kde.Shutdown /Shutdown logoutAndReboot"
-alias shutdown="qdbus6 org.kde.Shutdown /Shutdown logoutAndShutdown"
+alias neofetch="fastfetch"
