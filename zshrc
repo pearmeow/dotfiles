@@ -125,4 +125,4 @@ alias neofetch="fastfetch --logo arch2"
 
 # STARTUP
 
-neofetch
+# neofetch
