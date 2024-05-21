@@ -122,7 +122,3 @@ alias vi="nvim"
 alias vim="nvim"
 alias cat="bat --paging=never"
 alias neofetch="fastfetch --logo arch2"
-
-# STARTUP
-
-# neofetch
