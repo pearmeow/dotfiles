@@ -1,24 +1,29 @@
+ -- Finished
+file manager: thunar (thunar)
+
+Display manager: sddm (sddm, sudo systemctl start sddm.service)
+Screen locker: i3lock
+Audio control: wpctl (wpct set-volume/set-mute @device@ value)
+Polkit authentication agent: polkit-kde-agent (spawnOnce)
+Screen capture: flameshot (spawnOnce))
+Wallpaper setter: feh (feh --bg-scale dotfiles/themes/katana.jpg, spawnOnce ~/.fehbg &)
+Backlight control: light (aur, only for laptop)
+Power management: btop (btop)
+Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmenud.service)
+
+ -- TODO
+ - Urgent
+System tray (trayer)
+Display volume on bar
+Media control: ncmpcpp for music
+Make certain apps float by default
+
+ - Partially done
 window manager: xmonad (xmonad, xmonad-contrib)
 taskbar: xmobar (xmobar)
-
 terminal emulator: alacritty (alacritty)
-file manager: thunar (thunar)
 text editor: nvim (neovim)
-browser: qutebrowser
-
+browser: qutebrowser (qutebrowser)
 Desktop compositor (Xorg) : picom (picom)
 Notification daemon: dunst (dunst)
-Display manager: sddm (sddm, sudo systemctl start sddm.service)
-Screen locker:
-Application launcher: dmenu (dmenu)
-Audio control: alsamixer (manual launch from terminal)
-Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
-Screen capture: flameshot (exec --no-startup-id))
-Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
-Logout dialogue:
-Backlight control: light (aur, only for laptop)
-Media control: ncmpcpp for music (get)
-Power management: btop (btop)
-
-Clipboard: clipmenu or xsel?? (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
-
+Application launcher: rofi (rofi drun something)
