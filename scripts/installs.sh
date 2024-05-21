@@ -14,3 +14,4 @@ feh --bg-scale dotfiles/themes/120_-_KnFPX73.jpg
 sudo timedatectl set-ntp true
 sudo timedatectl set-timezone US/Eastern
 sudo hwclock --systohc --utc
+sudo pacman -S discord
