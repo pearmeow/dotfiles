@@ -1,15 +1,16 @@
-window manager: i3
-taskbar: polybar using conky (later)
+window manager: xmonad (xmonad, xmonad-contrib)
+taskbar: xmobar (xmobar)
 
-terminal emulator: alacritty
-file manager: thunar
-text editor: neovim
+terminal emulator: alacritty (alacritty)
+file manager: thunar (thunar)
+text editor: nvim (neovim)
+browser: qutebrowser
 
-Desktop compositor (Xorg) : picom
-Notification daemon: dunst (config later)
-Display manager: sddm (where is my sddm theme theme)
+Desktop compositor (Xorg) : picom (picom)
+Notification daemon: dunst (dunst)
+Display manager: sddm (sddm, sudo systemctl start sddm.service)
 Screen locker:
-Application launcher: dmenu
+Application launcher: dmenu (dmenu)
 Audio control: alsamixer (manual launch from terminal)
 Polkit authentication agent: polkit-kde-agent (exec --no-startup-id)
 Screen capture: flameshot (exec --no-startup-id))
@@ -17,7 +18,7 @@ Wallpaper setter: feh (exec --no-startup-id ~/.fehbg &)
 Logout dialogue:
 Backlight control: light (aur, only for laptop)
 Media control: ncmpcpp for music (get)
-Power management: powertop (get)
+Power management: btop (btop)
 
 Clipboard: clipmenu or xsel?? (env: CM_LAUNCHER=rofi, sudo systemd: clipmenud)
 
