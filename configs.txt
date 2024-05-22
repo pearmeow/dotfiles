@@ -1,5 +1,6 @@
  -- Finished
 file manager: thunar (thunar)
+browser: brave
 
 Display manager: sddm (sddm, sudo systemctl start sddm.service)
 Screen locker: i3lock
@@ -26,7 +27,6 @@ window manager: xmonad (xmonad, xmonad-contrib)
 taskbar: xmobar (xmobar)
 terminal emulator: alacritty (alacritty)
 text editor: nvim (neovim)
-browser: qutebrowser (qutebrowser)
 Desktop compositor (Xorg) : picom (picom)
 Notification daemon: dunst (dunst)
 Application launcher: rofi (rofi drun something)
