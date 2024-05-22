@@ -172,7 +172,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     ++
-    -- XF86 keys
+    -- XF86 keys, hex from xev -event keyboard
     -- MonBrightnessUp
     [ ((0, 0x1008ff02), spawn "light -A 5")
     -- MonBrightness Down
