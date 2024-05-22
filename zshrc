@@ -1,9 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
+# setxkbmap -option caps:escape
+# xset r rate 300 25
+
 export ZSH=$HOME/.oh-my-zsh
-export CM_LAUNCHER=rofi
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export CM_LAUNCHER=rofi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -122,3 +126,7 @@ alias vi="nvim"
 alias vim="nvim"
 alias cat="bat --paging=never"
 alias neofetch="fastfetch --logo arch2"
+
+# STARTUP
+
+# neofetch

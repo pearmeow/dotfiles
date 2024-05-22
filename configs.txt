@@ -13,6 +13,7 @@ Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmen
 
  -- TODO
  - Urgent
+Make things fullscreen with no border
 System tray (trayer)
 Display volume on bar
 Media control: ncmpcpp for music

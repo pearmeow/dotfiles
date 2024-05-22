@@ -1,0 +1,7 @@
+import = [ "~/.config/alacritty/themes/snazzy.toml"]
+[font]
+size = 8
+normal = { family = "JetBrainsMonoNerdFontMono", style = "Regular" }
+# [window]
+# dimensions = { columns = 120, lines = 40 }
+# startup_mode = "Maximized"
