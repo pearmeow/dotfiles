@@ -15,6 +15,7 @@ Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmen
  -- TODO
  - Urgent
 DONE                    Make things fullscreen with no border
+Fix fullscreen issue with chromium browsers
 Startup certain apps in certain workspaces
 Pull certain apps to certain workspaces
 Make certain apps float by default

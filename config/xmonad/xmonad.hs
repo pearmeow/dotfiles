@@ -174,15 +174,15 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     ++
     -- XF86 keys, hex from xev -event keyboard
     -- MonBrightnessUp
-    [ ((0, 0x1008ff02), spawn "light -A 5")
+    [ ((0, 0x1008ff02), spawn "light -A 3")
     -- MonBrightness Down
-    , ((0, 0x1008ff03), spawn "light -U 5")
+    , ((0, 0x1008ff03), spawn "light -U 3")
     -- Mute
-    , ((0, 0x1008ff12), spawn "wpctl set-mute @DEFAULT_SINK@ 1")
+    , ((0, 0x1008ff12), spawn "wpctl set-mute @DEFAULT_SINK@ toggle")
     -- RaiseVolume
-    , ((0, 0x1008ff13), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 5%+")
+    , ((0, 0x1008ff13), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 2%+")
     -- LowerVolume
-    , ((0, 0x1008ff11), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 100%-") ]
+    , ((0, 0x1008ff11), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 2%-") ]
 
 
 ------------------------------------------------------------------------

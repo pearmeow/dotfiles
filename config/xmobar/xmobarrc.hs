@@ -92,8 +92,11 @@ Config {
                              , "--low"      , "lightgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
-                             , "--"
+
+                             , "--" -- volume specific options
+                                       -- muted
                                        , "-o", "OFF"
+                                       -- not muted
                                        , "-O", "ON"
                              ]
 
