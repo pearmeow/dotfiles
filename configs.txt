@@ -13,11 +13,13 @@ Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmen
 
  -- TODO
  - Urgent
-Make things fullscreen with no border
+DONE                    Make things fullscreen with no border
+Startup certain apps in certain workspaces
+Pull certain apps to certain workspaces
+Make certain apps float by default
 System tray (trayer)
 Display volume on bar
 Media control: ncmpcpp for music
-Make certain apps float by default
 
  - Partially done
 window manager: xmonad (xmonad, xmonad-contrib)
