@@ -1,4 +1,7 @@
- - Finished
+<h1>dotfile for Arch Linux</h1>
+- This is an early version. Many things are still incomplete
+
+<h2>Finished</h2>
 file manager: thunar (thunar)
 browser: brave
 
