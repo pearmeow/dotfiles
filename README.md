@@ -1,5 +1,5 @@
-<h1>dotfile for Arch Linux</h1>
-- This is an early version. Many things are still incomplete
+<h1>dotfiles for Arch Linux</h1>
+This is an early version. Many things are still incomplete.
 
 <h2>TODO</h2>
 <h3>Urgent</h3>
