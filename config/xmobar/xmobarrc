@@ -6,7 +6,7 @@ Config {
      font =         "JetBrains Mono Nerd Font Mono Bold 11"
    , bgColor =      "#1a1b26"
    , fgColor =      "#a9b1d6"
-   , position =     BottomH 24
+   , position =     BottomH 26
    -- , border =       BottomB
    -- , borderColor =  "#646464"
 
@@ -42,16 +42,16 @@ Config {
         [
 
         -- cpu activity monitor
-        Run MultiCpu       [ "--template" , "CPU <total0>%|<total1>%"
+        Run MultiCpu       [ "--template" , "CPU <total>%"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
                              , "--low"      , "green"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
-                             ] 10
+                             ] 50
 
         -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "TEMP <core0>°C|<core1>°C"
+        , Run CoreTemp       [ "--template" , "TEMP <core0>°C"
                              , "--Low"      , "70"        -- units: °C
                              , "--High"     , "80"        -- units: °C
                              , "--low"      , "green"
@@ -61,12 +61,12 @@ Config {
 
         -- memory usage monitor
         , Run Memory         [ "--template" , "MEM <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
+                             , "--Low"      , "25"        -- units: %
+                             , "--High"     , "75"        -- units: %
                              , "--low"      , "green"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
-                             ] 10
+                             ] 50
 
         -- battery monitor
         , Run Battery        [ "--template" , "BATT <acstatus>"
@@ -84,7 +84,7 @@ Config {
                                        -- charged status
                                        , "-i", "<fc=#006000>Charged</fc>"
                              ] 50
-        -- volume monitor
+        -- volume monitor which uses alsa
         , Run Alsa           "default" "Master" 
                              [ "--template", "VOL <volume>% <status>"
                              , "--Low"      , "15"        -- units:dB
@@ -92,15 +92,17 @@ Config {
                              , "--low"      , "lightgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
-                             , "--"
+
+                             , "--" -- volume specific options
+                                       -- muted
                                        , "-o", "OFF"
+                                       -- not muted
                                        , "-O", "ON"
                              ]
 
         -- time and date indicator 
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#ABABAB>%F %a %T</fc>" "date" 10
-
+        , Run Date           "<fc=#ABABAB>%F %a %T</fc>" "date" 50
 
         ]
    }

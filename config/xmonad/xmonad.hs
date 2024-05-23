@@ -19,6 +19,8 @@ import XMonad.Util.EZConfig -- XF86 keybindings... in the future perhaps
 
 -- For fullscreen
 import XMonad.Actions.NoBorders
+-- And fixing full screen
+import XMonad.Util.Hacks
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -245,8 +247,7 @@ myLayout = avoidStruts $ spacingWithEdge 2  (tiled ||| Mirror tiled ||| Full)
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "MPlayer"        --> doFloat
-    , className =? "Gimp"           --> doFloat
+    [ className =? "Gimp"           --> doFloat
     , className =? "Thunar"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -260,7 +261,7 @@ myManageHook = composeAll
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
 --
-myEventHook = mempty
+myEventHook = handleEventHook def <> XMonad.Util.Hacks.windowedFullscreenFixEventHook
 
 ------------------------------------------------------------------------
 -- Status bars and logging
@@ -280,18 +281,18 @@ myLogHook = return ()
 myStartupHook = do
         spawnOnce "~/.fehbg &"
         spawnOnce "dunst &"
-        spawnOnce "xmobar &"
         spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
         spawnOnce "xss-lock --transfer-sleep-lock -- i3lock --nofork &"
+        spawn "killall xmobar; xmobar &"
         spawn "setxkbmap -option caps:escape"
         spawn "xset r rate 300 25"
 
 ------------------------------------------------------------------------
 -- Now run xmonad with all the defaults we set up.
-
--- Run xmonad with the settings you specify. No need to modify this.
 --
+
 main = do
+        -- start xmobar on the 0th monitor with the config in the path
         xmproc <- spawnPipe "xmobar -x 0 /home/pearmeow/.config/xmobar/xmobarrc"
         xmonad $ docks defaults
 
@@ -320,7 +321,7 @@ toggleFull = withFocused (\windowId -> do
        withFocused $ windows . W.sink
    else do
        withFocused $ toggleBorder
-       withFocused $  windows . (flip W.float $ W.RationalRect 0 0 1 1)    }    )
+       withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1)    }    )
 
 toggleFloat :: Window -> X ()
 toggleFloat w =
