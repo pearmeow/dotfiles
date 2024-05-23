@@ -17,6 +17,7 @@ Clipboard: clipmenu (env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmen
 DONE                    Make things fullscreen with no border
 DONE                    Display volume on bar
 DONE                    Fix fullscreen issue with chromium browsers
+Make dunst send a warning at critical battery levels
 Startup certain apps in certain workspaces
 Pull certain apps to certain workspaces
 Make certain apps float by default
