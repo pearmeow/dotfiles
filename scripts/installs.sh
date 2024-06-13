@@ -11,7 +11,7 @@ sudo pacman -S --needed git make gcc ripgrep unzip wget fd openssh man fastfetch
 sudo pacman -S --needed xmonad xmonad-contrib xmobar discord alacritty thunar gvim neovim picom dunst sddm dmenu polkit-kde-agent flameshot feh ncmpcpp btop clipmenu rofi vi
 sudo systemctl enable sddm.service
 systemctl --user enable clipmenud.service
-feh --bg-scale ~/dotfiles/themes/katana.jpg
+feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
 # Time
 sudo timedatectl set-ntp true
