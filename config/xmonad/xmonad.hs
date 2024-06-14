@@ -16,6 +16,7 @@ import XMonad.Util.Run -- spawnPipe
 import XMonad.Hooks.ManageDocks -- Make xmobar appear
 import XMonad.Layout.Spacing -- Spacing
 import XMonad.Util.EZConfig -- XF86 keybindings... in the future perhaps
+import XMonad.Hooks.EwmhDesktops -- EWMH compliant
 
 -- For fullscreen
 import XMonad.Actions.NoBorders
@@ -136,11 +137,8 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Deincrement the number of windows in the master area
     , ((modm              , xK_period), sendMessage (IncMasterN (-1)))
 
-    -- Toggle the status bar gap
-    -- Use this binding with avoidStruts from Hooks.ManageDocks.
-    -- See also the statusBar function from Hooks.DynamicLog.
-    --
-    -- , ((modm              , xK_b     ), sendMessage ToggleStruts)
+    -- Toggle borders
+    , ((modm              , xK_b     ), withFocused $ toggleBorder)
 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
@@ -255,8 +253,6 @@ myManageHook = composeAll
 ------------------------------------------------------------------------
 -- Event handling
 
--- * EwmhDesktops users should change this to ewmhDesktopsEventHook
---
 -- Defines a custom handler function for X Events. The function should
 -- return (All True) if the default handler is to be run afterwards. To
 -- combine event hooks use mappend or mconcat from Data.Monoid.
@@ -281,9 +277,11 @@ myLogHook = return ()
 myStartupHook = do
         spawnOnce "~/.fehbg &"
         spawnOnce "dunst &"
+        spawnOnce "unclutter &"
         spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
         spawnOnce "xss-lock --transfer-sleep-lock -- i3lock --nofork &"
-        spawn "killall xmobar; xmobar &"
+        spawn "wpctl set-volume @DEFAULT_SINK@ 0"
+        spawn "killall xmobar; sleep 1; xmobar &"
         spawn "setxkbmap -option caps:escape"
         spawn "xset r rate 300 25"
 
@@ -294,15 +292,10 @@ myStartupHook = do
 main = do
         -- start xmobar on the 0th monitor with the config in the path
         xmproc <- spawnPipe "xmobar -x 0 /home/pearmeow/.config/xmobar/xmobarrc"
-        xmonad $ docks defaults
-
-        -- Might swap to EZConfig later
-        -- [ ((XF86MonBrightnessUp), spawn "light -A 1")
-        -- , ((XF86MonBrightnessDown), spawn "light -U 1")
-        -- , ((XF86AudioMute), spawn "wpctl set-mute @DEFAULT_SINK@ 1")
-        -- , ((XF86AudioLowerVolume), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 1%+")
-        -- , ((XF86AudioRaiseVolume), spawn "wpctl set-volume -l 1 @DEFAULT_SINK@ 1%-") ]
-
+        -- docks is for xmobar
+        -- ewmh causes steam dropdown to break
+        -- took out ewmhFullscreen
+        xmonad $ docks $ defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will

@@ -87,8 +87,8 @@ Config {
         -- volume monitor which uses alsa
         , Run Alsa           "default" "Master" 
                              [ "--template", "VOL <volume>% <status>"
-                             , "--Low"      , "15"        -- units:dB
-                             , "--High"     , "25"        -- units:dB
+                             , "--Low"      , "25"        -- units:dB
+                             , "--High"     , "50"        -- units:dB
                              , "--low"      , "lightgreen"
                              , "--normal"   , "darkorange"
                              , "--high"     , "darkred"
