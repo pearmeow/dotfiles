@@ -4,8 +4,6 @@ This is an early version. Many things are still incomplete.
 <h2>TODO</h2>
 <h3>Urgent</h3>
 <ul>
-    <li> Make cursor disappear after inactivity</li>
-    <li> Make dunst send a warning at critical battery levels</li>
     <li> Startup certain apps in certain workspaces</li>
     <li> Pull certain apps to certain workspaces</li>
     <li> Make certain apps float by default</li>
