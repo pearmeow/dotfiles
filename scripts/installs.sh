@@ -30,5 +30,6 @@ sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains
 
 # AUR (yay)
 # Backlight
-yay -S light brave-bin batsignal
+yay -S light brave-bin batsignal ttf-times-new-roman
 systemctl --user enable batsignal.service
+
