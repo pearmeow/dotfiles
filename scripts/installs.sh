@@ -28,8 +28,11 @@ sudo pacman -S --needed xss-lock i3lock
 # Fonts
 sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd
 
+# Audio Defaults
+sudo gpasswd -a pearmeow realtime
+sudo pacman -S realtime-privileges
+
 # AUR (yay)
 # Backlight
 yay -S light brave-bin batsignal ttf-times-new-roman
 systemctl --user enable batsignal.service
-
