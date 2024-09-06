@@ -127,6 +127,7 @@ alias vim="nvim"
 alias cat="bat --paging=never"
 alias neofetch="fastfetch --logo arch2"
 alias rm="rm -i"
+alias tree="ls --tree"
 
 # STARTUP
 
