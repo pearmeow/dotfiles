@@ -8,7 +8,7 @@ sudo pacman -S --needed xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xt
 
 # Essentials
 sudo pacman -S --needed make gcc ripgrep unzip wget fd openssh man fastfetch bat lsd
-sudo pacman -S --needed xmonad xmonad-contrib xmobar discord alacritty thunar gvim neovim picom dunst sddm dmenu polkit-kde-agent flameshot feh ncmpcpp btop clipmenu rofi vi unclutter
+sudo pacman -S --needed xmonad xmonad-contrib xmobar alacritty thunar gvim neovim picom dunst sddm dmenu polkit-kde-agent flameshot feh ncmpcpp btop clipmenu rofi vi unclutter
 sudo systemctl enable sddm.service
 systemctl --user enable clipmenud.service
 feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
@@ -34,5 +34,5 @@ sudo pacman -S realtime-privileges
 
 # AUR (yay)
 # Backlight
-yay -S light brave-bin batsignal ttf-times-new-roman
+yay -S light brave-bin batsignal ttf-times-new-roman vesktop
 systemctl --user enable batsignal.service
