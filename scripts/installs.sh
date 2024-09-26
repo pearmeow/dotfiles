@@ -19,7 +19,7 @@ sudo timedatectl set-timezone US/Eastern
 sudo hwclock --systohc --utc
 
 # Audio
-sudo pacman -S --needed alsa-utils pipewire-alsa pipewire-pulse
+sudo pacman -S --needed alsa-utils pipewire-alsa pipewire-pulse mpd ncmpcpp
 systemctl --user enable wireplumber.service
 
 # Lock

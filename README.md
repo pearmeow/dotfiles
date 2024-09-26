@@ -4,6 +4,7 @@ This is an early version. Many things are still incomplete.
 <h2>TODO</h2>
 <h3>Urgent</h3>
 <ul>
+    <li> Make config for mpd and ncmpcpp</li>
     <li> Startup certain apps in certain workspaces</li>
     <li> Pull certain apps to certain workspaces</li>
     <li> Make certain apps float by default</li>
