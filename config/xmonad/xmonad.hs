@@ -276,6 +276,7 @@ myLogHook = return ()
 --
 myStartupHook = do
         spawnOnce "~/.fehbg &"
+        spawnOnce "picom -b"
         spawnOnce "dunst &"
         spawnOnce "unclutter &"
         spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
@@ -295,7 +296,7 @@ main = do
         -- docks is for xmobar
         -- ewmh causes steam dropdown to break
         -- took out ewmhFullscreen
-        xmonad $ docks $ defaults
+        xmonad $ ewmh $ docks $ defaults
 
 -- A structure containing your configuration settings, overriding
 -- fields in the default config. Any you don't override, will
