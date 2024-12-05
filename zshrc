@@ -127,8 +127,6 @@ alias vim="nvim"
 alias cat="bat --paging=never"
 alias neofetch="fastfetch --logo arch2"
 alias rm="rm -i"
+alias lock="loginctl lock-sessions"
 alias tree="ls --tree"
-
-# STARTUP
-
-# neofetch
+alias tetrio="~/tetrio-desktop-9.0.0/TETR.IO --in-process-gpu &!"
