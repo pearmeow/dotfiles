@@ -246,7 +246,7 @@ myLayout = avoidStruts $ spacingWithEdge 2  (tiled ||| Mirror tiled ||| Full)
 --
 myManageHook = composeAll
     [ className =? "Gimp"           --> doFloat
-    , className =? "Thunar"         --> doFloat
+    , className =? "org.gnome.Nautilus"         --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
 
@@ -276,14 +276,15 @@ myLogHook = return ()
 --
 myStartupHook = do
         spawnOnce "~/.fehbg &"
-        spawnOnce "picom -b"
         spawnOnce "dunst &"
         spawnOnce "unclutter &"
         spawnOnce "/usr/lib/polkit-kde-authentication-agent-1 &"
-        spawnOnce "xss-lock --transfer-sleep-lock -- i3lock --nofork &"
+        -- spawnOnce "xss-lock --transfer-sleep-lock -- i3lock --nofork &"
+        spawnOnce "xset s off" -- sleeping doesn't work properly with controller
         spawn "wpctl set-volume @DEFAULT_SINK@ 0"
         spawn "killall xmobar; sleep 1; xmobar &"
         spawn "setxkbmap -option caps:escape"
+        spawn "xmodmap -e 'keycode 65 = space underscore'"
         spawn "xset r rate 300 25"
 
 ------------------------------------------------------------------------
