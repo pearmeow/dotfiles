@@ -284,7 +284,7 @@ myStartupHook = do
         spawn "wpctl set-volume @DEFAULT_SINK@ 0"
         spawn "killall xmobar; sleep 1; xmobar &"
         spawn "setxkbmap -option caps:escape"
-        spawn "xmodmap -e 'keycode 65 = space underscore'"
+        spawn "xmodmap ~/.xmodmaprc"
         spawn "xset r rate 300 25"
 
 ------------------------------------------------------------------------
