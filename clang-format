@@ -6,6 +6,6 @@ IndentWidth: 4
 Language: Cpp
 DerivePointerAlignment: False
 PointerAlignment: Left
-ColumnLimit: 80
+ColumnLimit: 120
 AllowShortFunctionsOnASingleLine: Empty
 ---
