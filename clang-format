@@ -7,4 +7,5 @@ Language: Cpp
 DerivePointerAlignment: False
 PointerAlignment: Left
 ColumnLimit: 80
+AllowShortFunctionsOnASingleLine: Empty
 ---
