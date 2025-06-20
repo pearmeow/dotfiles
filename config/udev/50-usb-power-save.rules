@@ -1,3 +1,3 @@
 # Lives in /etc/udev/rules.d/
 # Generic mouse and keyboard no suspend
-ACTION=="add", SUBSYSTEM=="usb", ATTR{product}!="*Mouse", ATTR{product}!="*Keyboard", TEST=="power/control", ATTR{power/control}="auto"
+ACTION=="add", SUBSYSTEM=="usb", ATTR{product}=="*Mouse", ATTR{product}=="*Keyboard", ATTR{power/autosuspend}="-1"
