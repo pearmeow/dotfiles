@@ -1,5 +1,3 @@
 # Lives in /etc/udev/rules.d/
-# Mouse no suspend for logitech superlight
-ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="046d", ATTR{idProduct}=="c547", ATTR{power/autosuspend}="-1"
-# Keyboard no suspend for ducky
-ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="3233", ATTR{idProduct}=="5311", ATTR{power/autosuspend}="-1"
+# Generic mouse and keyboard no suspend
+ACTION=="add", SUBSYSTEM=="usb", ATTR{product}!="*Mouse", ATTR{product}!="*Keyboard", TEST=="power/control", ATTR{power/control}="auto"
