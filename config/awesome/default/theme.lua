@@ -4,15 +4,21 @@
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local gears = require("gears")
 local dpi = xresources.apply_dpi
 
-local gfs = require("gears.filesystem")
-local themes_path = gfs.get_themes_dir()
+local themes_path = "/home/pearmeow/.config/awesome/"
 
 local theme = {}
 
 theme.bar_bg = "#282424"
 theme.bar_fg = "#FFFFFF"
+theme.widget_border = "#FFFFFF"
+theme.widget_hover = "#008b8b"
+
+theme.fg_good = "00ff00"
+theme.fg_normal = "ffff00"
+theme.fg_critical = "ff0000"
 
 theme.font = "JetBrainsMono Nerd Font Mono 15"
 theme.bg_normal = "#222222"
@@ -27,10 +33,10 @@ theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
 theme.useless_gap = dpi(5)
-theme.border_width = dpi(3)
-theme.border_normal = "#abb9b9"
+theme.border_width = dpi(5)
+theme.border_normal = "#3b4b54"
+theme.border_focus = "#67a2c4"
 
-theme.border_focus = "#1F96FF"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
@@ -44,7 +50,8 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
---theme.taglist_bg_focus = "#ff0000"
+theme.taglist_bg_focus = "#008b8b"
+theme.taglist_fg_focus = "#FFFFFF"
 
 -- Variables set for theming notifications:
 theme.notification_font = "JetBrainsMono Nerd Font Mono 18"
@@ -68,7 +75,26 @@ theme.menu_width = dpi(100)
 --theme.bg_widget = "#cc0000"
 
 -- Define the image to load
-theme.wallpaper = "/home/pearmeow/dotfiles/wallpapers/bloodmoon.jpg"
+theme.wallpaper = themes_path .. "default/background.jpg"
+
+-- Volume icons
+theme.volume_mute = themes_path .. "default/icons/volume-mute.png"
+theme.volume_variant_mute = themes_path .. "default/icons/volume-variant-mute.png"
+theme.volume_low = themes_path .. "default/icons/volume-low.png"
+theme.volume_medium = themes_path .. "default/icons/volume-medium.png"
+theme.volume_high = themes_path .. "default/icons/volume-high.png"
+
+-- Battery icons
+theme.battery_100 = themes_path .. "default/icons/battery-100.png"
+theme.battery_80 = themes_path .. "default/icons/battery-80.png"
+theme.battery_60 = themes_path .. "default/icons/battery-60.png"
+theme.battery_40 = themes_path .. "default/icons/battery-40.png"
+theme.battery_20 = themes_path .. "default/icons/battery-20.png"
+theme.battery_critical = themes_path .. "default/icons/battery-critical.png"
+theme.battery_charging = themes_path .. "default/icons/battery-charging.png"
+
+-- Brightness icon
+theme.brightness = themes_path .. "default/icons/brightness.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

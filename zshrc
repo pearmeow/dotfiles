@@ -124,6 +124,7 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 alias ls='lsd'
 alias vi="nvim"
 alias vim="nvim"
+alias vimdiff="nvim -d"
 alias cat="bat --paging=never"
 alias neofetch="fastfetch --logo arch2"
 alias rm="rm -I"
