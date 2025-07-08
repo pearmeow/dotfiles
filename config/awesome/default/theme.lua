@@ -4,28 +4,27 @@
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
-local gears = require("gears")
 local dpi = xresources.apply_dpi
 
+local gfs = require("gears.filesystem")
 local themes_path = "/home/pearmeow/.config/awesome/"
 
 local theme = {}
 
+theme.font = "JetBrainsMono Nerd Font Mono 15"
 theme.bar_bg = "#282424"
 theme.bar_fg = "#FFFFFF"
 theme.widget_border = "#FFFFFF"
 theme.widget_hover = "#008b8b"
 
-theme.fg_good = "00ff00"
-theme.fg_normal = "ffff00"
-theme.fg_critical = "ff0000"
+theme.widget_good = "#00ff00"
+theme.widget_normal = "#ffff00"
+theme.widget_critical = "#ff0000"
 
-theme.font = "JetBrainsMono Nerd Font Mono 15"
 theme.bg_normal = "#222222"
 theme.bg_focus = "#535d6c"
 theme.bg_urgent = "#ff0000"
 theme.bg_minimize = "#444444"
-theme.bg_systray = theme.bg_normal
 
 theme.fg_normal = "#aaaaaa"
 theme.fg_focus = "#ffffff"
@@ -33,7 +32,7 @@ theme.fg_urgent = "#ffffff"
 theme.fg_minimize = "#ffffff"
 
 theme.useless_gap = dpi(5)
-theme.border_width = dpi(5)
+theme.border_width = dpi(3)
 theme.border_normal = "#3b4b54"
 theme.border_focus = "#67a2c4"
 
@@ -50,8 +49,6 @@ theme.border_marked = "#91231c"
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
-theme.taglist_bg_focus = "#008b8b"
-theme.taglist_fg_focus = "#FFFFFF"
 
 -- Variables set for theming notifications:
 theme.notification_font = "JetBrainsMono Nerd Font Mono 18"
@@ -113,13 +110,6 @@ theme.layout_cornernw = themes_path .. "default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path .. "default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path .. "default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path .. "default/layouts/cornersew.png"
-
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(theme.menu_height, theme.bg_focus, theme.fg_focus)
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme = nil
 
 return theme
 
