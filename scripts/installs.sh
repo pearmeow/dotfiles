@@ -7,87 +7,87 @@
 packages=""
 
 # Display server
-packages="${packages} xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xmessage"
+packages+=" xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xmessage"
 
 # Essentials
-packages="${packages} make gcc unzip wget fd openssh man"
+packages+=" make gcc unzip wget fd openssh man"
 
 # Terminal emulator
-packages="${packages} alacritty"
+packages+=" alacritty"
 
 # File manager
-packages="${packages} nautilus"
+packages+=" nautilus"
 
 # Text editor
-packages="${packages} neovim"
+packages+=" neovim"
 
 # Compositor if not on Wayland
-packages="${packages} picom"
+packages+=" picom"
 
 # Display manager
-packages="${packages} sddm"
+packages+=" sddm"
 
 # Polkit authentication
-packages="${packages} polkit-kde-agent"
+packages+=" polkit-kde-agent"
 
 # Screenshot
-packages="${packages} flameshot"
+packages+=" flameshot"
 
 # Music player
-packages="${packages} ncmpcpp"
+packages+=" ncmpcpp"
 
 # System overview
-packages="${packages} btop"
+packages+=" btop"
 
 # Replacement for ls, cat, neofetch, and grep
-packages="${packages} lsd, bat, fastfetch, ripgrep"
+packages+=" lsd, bat, fastfetch, ripgrep"
 
 # Window manager + notification daemon + bar + background image
-packages="${packages} awesome"
+packages+=" awesome"
 
 # Hide cursor after some time
-packages="${packages} unclutter"
+packages+=" unclutter"
 
 # Dmenu replacement to search for apps
-packages="${packages} rofi"
+packages+=" rofi"
 
 # Clipboard
-packages="${packages} xsel"
+packages+=" xsel"
 
 # Notification daemon if not using awesome
-# packages="${packages} dunst"
+# packages+=" dunst"
 # Wallpaper if not using awesome
-# packages="${packages} feh"
+# packages+=" feh"
 
 # Audio
-packages="${packages} pipewire-alsa pipewire-pulse"
+packages+=" pipewire-alsa pipewire-pulse"
 
 # Lock
-packages="${packages} xss-lock i3lock"
+packages+=" xss-lock i3lock"
 
 # Fonts
-packages="${packages} noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd ttf-roboto"
+packages+=" noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd ttf-roboto"
 
 # Audio Defaults
-packages="${packages} realtime-privileges"
+packages+=" realtime-privileges"
 
 # Battery command
-packages="${packages} acpi"
+packages+=" acpi"
 
 # Autostart using awesome
-packages="${packages} dex"
+packages+=" dex"
 
 # Configure logitech mice
-packages="${packages} solaar"
+packages+=" solaar"
 
 # AUR (yay)
 yaypackages=""
 # Backlight
-yaypackages="${yaypackages} light"
+yaypackages+=" light"
 # Browser, discord, and font
-yaypackages="${yaypackages} brave-bin vesktop ttf-times-new-roman"
+yaypackages+=" brave-bin vesktop ttf-times-new-roman"
 # Signal for low battery
-yaypackages="${yaypackages} batsignal"
+yaypackages+=" batsignal"
 
 sudo pacman -S --needed $packages
 yay -S --needed $yaypackages
@@ -128,3 +128,7 @@ sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d
 # Copy awesome and alacritty configs into .config
 cp -r ../config/awesome ~/.config/
 cp -r ../config/alacritty ~/.config/
+mkdir -p /usr/share/sddm/themes/
+sudo cp -r ../config/sddm/where_is_my_sddm_theme/ /usr/share/sddm/themes/
+mkdir -p /etc/sddm.conf.d/
+sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
