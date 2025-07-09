@@ -83,14 +83,18 @@ yaypackages="${yaypackages} batsignal"
 sudo pacman -S --needed $packages
 yay -S --needed $yaypackages
 
+# Low battery
 systemctl --user enable batsignal.service
+# Audio with wpctl
 systemctl --user enable wireplumber.service
+# Display manager
 sudo systemctl enable sddm.service
+# Add self to realtime group for good audio
 sudo gpasswd -a pearmeow realtime
+# Set background image
 # feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
 # Time
 sudo timedatectl set-ntp true
 sudo timedatectl set-timezone US/Eastern
 sudo hwclock --systohc --utc
-
