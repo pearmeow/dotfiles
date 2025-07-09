@@ -365,14 +365,14 @@ brightness_widget:buttons(gears.table.join(
 ))
 
 local vol_icon = wibox.widget({
-	image = "/home/pearmeow/.config/awesome/icons/volume.png",
+	image = beautiful.volume_low,
 	resize = true,
 	widget = wibox.widget.imagebox,
 })
 
 local vol_bar = wibox.widget({
 	-- Ascii for bar ▓▒
-	markup = "[▓▓▓▒▒▒▒▒▒▒] 28.0%",
+	markup = makeBar(0.28),
 	widget = wibox.widget.textbox,
 })
 
@@ -390,7 +390,7 @@ local audio_widget = wibox.widget({
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
-	fg = beautiful.bar_fg,
+	fg = beautiful.widget_good,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
 	shape_border_width = 2,
@@ -536,7 +536,7 @@ local globalkeys = gears.table.join(
 
 	-- Rofi
 	awful.key({ modkey }, "p", function()
-		awful.spawn.with_shell("rofi -show drun")
+		awful.spawn.with_shell("~/.config/rofi/launchers/type-6/launcher.sh")
 	end, { description = "show rofi", group = "launcher" }),
 	-- Flameshot
 	awful.key({ modkey, "Shift" }, "s", function()
@@ -699,6 +699,10 @@ awful.rules.rules = {
 	-- Set Firefox to always map on the tag named "2" on screen 1.
 	-- { rule = { class = "Firefox" },
 	--   properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "brave-browser", "Brave-browser" }, properties = { screen = 1, tag = "1" } },
+	{ rule = { class = "com.github.xournalpp.xournalpp" }, properties = { screen = 1, tag = "4" } },
+	{ rule = { class = "steam" }, properties = { screen = 1, tag = "9" } },
+	{ rule = { class = "vesktop", "vencorddesktop", "VencordDesktop" }, properties = { screen = 1, tag = "10" } },
 }
 -- }}}
 
@@ -752,7 +756,8 @@ awful.spawn.with_shell(
 )
 
 -- Autostart script & commands to run on startup
-awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
-changeVol()
+-- Windows don't go to correct tags
+-- awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
+awful.spawn.easy_async("sleep 5", changeVol)
 changeBrightness()
 changeBattery()
