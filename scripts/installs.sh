@@ -3,87 +3,94 @@
 # Before you install
 # Make sure yay is installed from the git repo
 
+# Package variable so everything can be installed in one command later
+packages=""
+
 # Display server
-sudo pacman -S --needed xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xmessage
+packages="${packages} xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xmessage"
 
 # Essentials
-sudo pacman -S --needed make gcc unzip wget fd openssh man
+packages="${packages} make gcc unzip wget fd openssh man"
 
 # Terminal emulator
-sudo pacman -S --needed alacritty
-polkit-kde-agent flameshot ncmpcpp btop vi
+packages="${packages} alacritty"
 
 # File manager
-sudo pacman -S --needed nautilus
+packages="${packages} nautilus"
 
 # Text editor
-sudo pacman -S --needed neovim
+packages="${packages} neovim"
 
 # Compositor if not on Wayland
-sudo pacman -S --needed picom
+packages="${packages} picom"
 
 # Display manager
-sudo pacman -S --needed sddm
+packages="${packages} sddm"
 
 # Polkit authentication
-sudo pacman -S --needed polkit-kde-agent
+packages="${packages} polkit-kde-agent"
 
 # Screenshot
-sudo pacman -S --needed flameshot
+packages="${packages} flameshot"
 
 # Music player
-sudo pacman -S --needed ncmpcpp
+packages="${packages} ncmpcpp"
 
 # System overview
-sudo pacman -S --needed btop
+packages="${packages} btop"
 
 # Replacement for ls, cat, neofetch, and grep
-sudo pacman -S --needed lsd, bat, fastfetch, ripgrep
+packages="${packages} lsd, bat, fastfetch, ripgrep"
 
 # Window manager + notification daemon + bar + background image
-sudo pacman -S --needed awesome
+packages="${packages} awesome"
 
 # Hide cursor after some time
-sudo pacman -S --needed unclutter
+packages="${packages} unclutter"
 
 # Dmenu replacement to search for apps
-sudo pacman -S --needed rofi
+packages="${packages} rofi"
 
 # Clipboard
-sudo pacman -S --needed xsel
+packages="${packages} xsel"
 
 # Notification daemon if not using awesome
-# sudo pacman -S --needed dunst
+# packages="${packages} dunst"
 # Wallpaper if not using awesome
-# sudo pacman -S --needed feh
+# packages="${packages} feh"
 
+# Audio
+packages="${packages} pipewire-alsa pipewire-pulse"
+
+# Lock
+packages="${packages} xss-lock i3lock"
+
+# Fonts
+packages="${packages} noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd"
+
+# Audio Defaults
+packages="${packages} realtime-privileges"
+
+# AUR (yay)
+yaypackages=""
+# Backlight
+yaypackages="${yaypackages} light"
+# Browser, discord, and font
+yaypackages="${yaypackages} brave-bin vesktop ttf-times-new-roman"
+# Signal for low battery
+yaypackages="${yaypackages} batsignal"
+
+sudo pacman -S --needed $packages
+yay -S --needed $yaypackages
+
+systemctl --user enable batsignal.service
+systemctl --user enable wireplumber.service
 sudo systemctl enable sddm.service
-feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
+sudo gpasswd -a pearmeow realtime
+# feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
 # Time
 sudo timedatectl set-ntp true
 sudo timedatectl set-timezone US/Eastern
 sudo hwclock --systohc --utc
 
-# Audio
-sudo pacman -S --needed pipewire-alsa pipewire-pulse
-systemctl --user enable wireplumber.service
-
-# Lock
-sudo pacman -S --needed xss-lock i3lock
-
-# Fonts
-sudo pacman -S --needed noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd
-
-# Audio Defaults
-sudo gpasswd -a pearmeow realtime
-sudo pacman -S realtime-privileges
-
-# AUR (yay)
-# Backlight
-yay -S light
-# Browser, discord, and font
-yay -S brave-bin vesktop ttf-times-new-roman 
-# Signal for low battery
-yay -S batsignal
-systemctl --user enable batsignal.service
