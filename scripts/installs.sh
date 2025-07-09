@@ -66,10 +66,19 @@ packages="${packages} pipewire-alsa pipewire-pulse"
 packages="${packages} xss-lock i3lock"
 
 # Fonts
-packages="${packages} noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd"
+packages="${packages} noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd ttf-roboto"
 
 # Audio Defaults
 packages="${packages} realtime-privileges"
+
+# Battery command
+packages="${packages} acpi"
+
+# Autostart using awesome
+packages="${packages} dex"
+
+# Configure logitech mice
+packages="${packages} solaar"
 
 # AUR (yay)
 yaypackages=""
@@ -98,3 +107,24 @@ sudo gpasswd -a pearmeow realtime
 sudo timedatectl set-ntp true
 sudo timedatectl set-timezone US/Eastern
 sudo hwclock --systohc --utc
+
+# Set up development environment
+mkdir ~/repos
+cp ../zshrc ~/.zshrc
+cp ../clang-format ~/.clang-format
+cp ../gitignore_global ~/.gitignore_global
+
+# Make dhcpcd run in the background to boot faster
+sudo mkdir /etc/systemd/system/dhcpcd@.service.d/
+sudo cp ../config/conf/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
+
+# Configure mouse and keyboard behavior
+sudo cp ../config/conf/00-keyboard.conf /etc/X11/xorg.conf.d/
+sudo cp ../config/conf/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
+
+# Configure wifi card to not shut down randomly
+sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
+
+# Copy awesome and alacritty configs into .config
+cp -r ../config/awesome ~/.config/
+cp -r ../config/alacritty ~/.config/
