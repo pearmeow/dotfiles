@@ -2,22 +2,23 @@
 -- Default awesome theme --
 ---------------------------
 
-local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
+local gears = require("gears")
 
-local gfs = require("gears.filesystem")
 local themes_path = "/home/pearmeow/.config/awesome/"
 
 local theme = {}
 
-theme.font = "JetBrainsMono Nerd Font Mono 15"
+theme.font = "JetBrainsMono Nerd Font Mono Bold 16"
 theme.bar_bg = "#282424"
 theme.bar_fg = "#FFFFFF"
+theme.bar_border_width = 10
 theme.widget_border = "#FFFFFF"
 theme.widget_hover = "#008b8b"
 
-theme.widget_good = "#00ff00"
+theme.widget_unaffected = "#00ffff"
+theme.widget_good = "#90ee90"
 theme.widget_normal = "#ffff00"
 theme.widget_critical = "#ff0000"
 
@@ -37,7 +38,6 @@ theme.border_normal = "#3b4b54"
 theme.border_focus = "#67a2c4"
 
 theme.border_marked = "#91231c"
-
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
@@ -52,9 +52,14 @@ theme.border_marked = "#91231c"
 
 -- Variables set for theming notifications:
 theme.notification_font = "JetBrainsMono Nerd Font Mono 18"
+theme.notification_fg = "#FFFFFF"
+theme.notification_bg = "#6770a0"
 theme.notification_icon_size = dpi(100)
 theme.notification_max_height = dpi(300)
 theme.notification_max_width = dpi(1000)
+theme.notification_shape = gears.shape.rounded_rect
+theme.notification_border_color = "#FFFFFF"
+theme.notification_border_width = dpi(3)
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
@@ -62,9 +67,6 @@ theme.notification_max_width = dpi(1000)
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path .. "default/submenu.png"
-theme.menu_height = dpi(15)
-theme.menu_width = dpi(100)
 
 -- You can add as many variables as
 -- you wish and access them by using

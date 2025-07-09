@@ -144,10 +144,17 @@ local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
 	if usage < 0.1 then
 		padding = " "
 	end
+	if usage < 0.33 then
+		ram_widget.fg = beautiful.widget_good
+	elseif usage < 0.66 then
+		ram_widget.fg = beautiful.widget_normal
+	else
+		ram_widget.fg = beautiful.widget_critical
+	end
 	widget:set_markup(" [RAM] " .. padding .. math.floor(usage * 1000) / 10 .. "%")
 end)
 
-local ram_widget = wibox.widget({
+ram_widget = wibox.widget({
 	{
 		{
 			{
@@ -188,10 +195,17 @@ local cpu_percent = awful.widget.watch("grep --max-count=1 '^cpu.' /proc/stat", 
 	if diff_usage < 10 then
 		padding = " "
 	end
+	if diff_usage < 33 then
+		cpu_widget.fg = beautiful.widget_good
+	elseif diff_usage < 66 then
+		cpu_widget.fg = beautiful.widget_normal
+	else
+		cpu_widget.fg = beautiful.widget_critical
+	end
 	widget:set_markup(" [CPU] " .. padding .. math.floor(diff_usage * 10) / 10 .. "%")
 end)
 
-local cpu_widget = wibox.widget({
+cpu_widget = wibox.widget({
 	{
 		{
 			{
@@ -277,7 +291,7 @@ local battery_widget = wibox.widget({
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
-	fg = beautiful.bar_fg,
+	fg = beautiful.widget_good,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
 	shape_border_width = 2,
@@ -296,14 +310,6 @@ local brightness_bar = wibox.widget({
 	markup = "[▓▓▓▓▓▒▒▒▒▒] 50%",
 	widget = wibox.widget.textbox,
 })
-
-local function changeBrightness()
-	local cmd = "light -G"
-	awful.spawn.easy_async(cmd, function(stdout, _, _, _)
-		local num = stdout:match("%d%p%d+")
-		brightness_bar.text = makeBar(num)
-	end)
-end
 
 local brightness_icon = wibox.widget({
 	image = beautiful.brightness,
@@ -325,7 +331,7 @@ local brightness_widget = wibox.widget({
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
-	fg = beautiful.bar_fg,
+	fg = beautiful.widget_unaffected,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
 	shape_border_width = 2,
@@ -339,6 +345,25 @@ brightness_widget:connect_signal("mouse::leave", function()
 	brightness_widget.bg = beautiful.bar_bg
 end)
 
+local function changeBrightness()
+	local cmd = "light -G"
+	awful.spawn.easy_async(cmd, function(stdout)
+		local num = tonumber(stdout:match("%d%p%d+"))
+		brightness_bar.markup = makeBar(num)
+	end)
+end
+
+brightness_widget:buttons(gears.table.join(
+	awful.button({}, 4, function()
+		local cmd = "light -A 3"
+		awful.spawn.easy_async(cmd, changeBrightness)
+	end),
+	awful.button({}, 5, function()
+		local cmd = "light -U 3"
+		awful.spawn.easy_async(cmd, changeBrightness)
+	end)
+))
+
 local vol_icon = wibox.widget({
 	image = "/home/pearmeow/.config/awesome/icons/volume.png",
 	resize = true,
@@ -350,29 +375,6 @@ local vol_bar = wibox.widget({
 	markup = "[▓▓▓▒▒▒▒▒▒▒] 28.0%",
 	widget = wibox.widget.textbox,
 })
-
-local function changeVol()
-	local cmd = "wpctl get-volume @DEFAULT_SINK@"
-	awful.spawn.easy_async(cmd, function(stdout, _, _, _)
-		local _, strNum = stdout:match("(%a+:)%s(%d%p%d+)")
-		local num = tonumber(strNum)
-		local icon = beautiful.volume_low
-		if num >= 0.66 then
-			icon = beautiful.volume_high
-		elseif num > 0.33 then
-			icon = beautiful.volume_medium
-		end
-		if stdout:len() > 13 then
-			if num < 0.33 then
-				icon = beautiful.volume_variant_mute
-			else
-				icon = beautiful.volume_mute
-			end
-		end
-		vol_icon.image = icon
-		vol_bar.text = makeBar(num)
-	end)
-end
 
 local audio_widget = wibox.widget({
 	{
@@ -395,6 +397,33 @@ local audio_widget = wibox.widget({
 	shape_border_color = beautiful.widget_border,
 })
 
+local function changeVol()
+	local cmd = "wpctl get-volume @DEFAULT_SINK@"
+	awful.spawn.easy_async(cmd, function(stdout, _, _, _)
+		local _, strNum = stdout:match("(%a+:)%s(%d%p%d+)")
+		local num = tonumber(strNum)
+		local icon = beautiful.volume_low
+		local fontcolor = beautiful.widget_good
+		if num >= 0.66 then
+			icon = beautiful.volume_high
+			fontcolor = beautiful.widget_critical
+		elseif num > 0.33 then
+			icon = beautiful.volume_medium
+			fontcolor = beautiful.widget_normal
+		end
+		if stdout:len() > 13 then
+			if num < 0.33 then
+				icon = beautiful.volume_variant_mute
+			else
+				icon = beautiful.volume_mute
+			end
+		end
+		audio_widget.fg = fontcolor
+		vol_icon.image = icon
+		vol_bar.text = makeBar(num)
+	end)
+end
+
 audio_widget:connect_signal("mouse::enter", function()
 	audio_widget.bg = beautiful.widget_hover
 end)
@@ -408,7 +437,7 @@ audio_widget:buttons(gears.table.join(
 		awful.spawn.easy_async(cmd, changeVol)
 	end),
 	awful.button({}, 4, function()
-		local cmd = "wpctl set-volume -l 1 @DEFAULT_SINK@ 2%+ && wpctl get-volume @DEFAULT_SINK@"
+		local cmd = "wpctl set-volume -l 1 @DEFAULT_SINK@ 2%+"
 		awful.spawn.easy_async(cmd, changeVol)
 	end),
 	awful.button({}, 5, function()
@@ -433,7 +462,7 @@ awful.screen.connect_for_each_screen(function(s)
 	s.mywibox = awful.wibar({
 		position = "top",
 		screen = s,
-		border_width = 15,
+		border_width = beautiful.bar_border_width,
 		bg = beautiful.bar_bg,
 		border_color = beautiful.bar_bg,
 		visible = true,
@@ -709,8 +738,12 @@ client.connect_signal("property::maximized", function(c)
 	c.maximized = false
 end)
 
--- }}}
+-- Jump to urgent client immediately (for opening links and such)
+client.connect_signal("property::urgent", function(c)
+	c:jump_to()
+end)
 
+-- }}}
 -- XDG autostart
 awful.spawn.with_shell(
 	'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;'
