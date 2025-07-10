@@ -758,6 +758,7 @@ awful.spawn.with_shell(
 -- Autostart script & commands to run on startup
 -- Windows don't go to correct tags
 -- awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
+-- Need to run changevol twice and with a delay because of wireplumber issues
 awful.spawn.easy_async("sleep 1", changeVol)
 changeVol()
 changeBrightness()
