@@ -125,7 +125,7 @@ local mytextclock = wibox.widget({
 	fg = beautiful.bar_fg,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -170,7 +170,7 @@ ram_widget = wibox.widget({
 	fg = beautiful.bar_fg,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -221,7 +221,7 @@ cpu_widget = wibox.widget({
 	fg = beautiful.bar_fg,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -294,7 +294,7 @@ local battery_widget = wibox.widget({
 	fg = beautiful.widget_good,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -334,7 +334,7 @@ local brightness_widget = wibox.widget({
 	fg = beautiful.widget_unaffected,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -393,7 +393,7 @@ local audio_widget = wibox.widget({
 	fg = beautiful.widget_good,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
-	shape_border_width = 2,
+	shape_border_width = beautiful.widget_border_width,
 	shape_border_color = beautiful.widget_border,
 })
 
@@ -456,7 +456,7 @@ awful.screen.connect_for_each_screen(function(s)
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table and is set with the layout in awful.layout.layouts[1]
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }, s, awful.layout.layouts[1])
+	awful.tag({ "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]", "[0]" }, s, awful.layout.layouts[1])
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({
@@ -468,12 +468,44 @@ awful.screen.connect_for_each_screen(function(s)
 		visible = true,
 	})
 
+	s.taglist = awful.widget.taglist({
+		screen = s,
+		filter = awful.widget.taglist.filter.selected,
+		widget_template = {
+			{
+				{
+					{
+						id = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left = 15,
+				right = 15,
+				widget = wibox.container.margin,
+			},
+			id = "background_role",
+			widget = wibox.container.background,
+			-- Add support for hover colors and an index label
+			create_callback = function(self, _, _, _) --luacheck: no unused args
+				self:connect_signal("mouse::enter", function()
+					self.bg = beautiful.widget_hover
+				end)
+				self:connect_signal("mouse::leave", function()
+					self.bg = beautiful.bar_bg
+				end)
+			end,
+		},
+	})
+
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		expand = "none",
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
+			s.taglist,
+			separator,
 			cpu_widget,
 			separator,
 			ram_widget,

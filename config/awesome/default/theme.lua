@@ -21,6 +21,7 @@ theme.widget_unaffected = "#00ffff"
 theme.widget_good = "#90ee90"
 theme.widget_normal = "#ffff00"
 theme.widget_critical = "#ff0000"
+theme.widget_border_width = dpi(2)
 
 theme.bg_normal = "#222222"
 theme.bg_focus = "#535d6c"
@@ -38,6 +39,12 @@ theme.border_normal = "#3b4b54"
 theme.border_focus = "#67a2c4"
 
 theme.border_marked = "#91231c"
+
+theme.taglist_bg_focus = "#282424"
+theme.taglist_fg_focus = "#00ffff"
+theme.taglist_shape = gears.shape.rectangle
+theme.taglist_shape_border_width = dpi(2)
+theme.taglist_shape_border_color = "#FFFFFF"
 -- There are other variable sets
 -- overriding the default one when
 -- defined, the sets are:
