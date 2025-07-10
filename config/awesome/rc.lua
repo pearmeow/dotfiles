@@ -399,9 +399,9 @@ local audio_widget = wibox.widget({
 
 local function changeVol()
 	local cmd = "wpctl get-volume @DEFAULT_SINK@"
-	awful.spawn.easy_async(cmd, function(stdout, _, _, _)
+	awful.spawn.easy_async(cmd, function(stdout)
 		local _, strNum = stdout:match("(%a+:)%s(%d%p%d+)")
-		local num = tonumber(strNum) or 0
+		local num = tonumber(strNum) or 0.28
 		local icon = beautiful.volume_low
 		local fontcolor = beautiful.widget_good
 		if num >= 0.66 then
@@ -758,6 +758,7 @@ awful.spawn.with_shell(
 -- Autostart script & commands to run on startup
 -- Windows don't go to correct tags
 -- awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
-awful.spawn.easy_async("sleep 5", changeVol)
+awful.spawn.easy_async("sleep 1", changeVol)
+changeVol()
 changeBrightness()
 changeBattery()
