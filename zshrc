@@ -4,6 +4,8 @@
 # setxkbmap -option caps:escape
 # xset r rate 300 25
 
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export CM_LAUNCHER=rofi
