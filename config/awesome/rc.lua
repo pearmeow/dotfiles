@@ -401,7 +401,7 @@ local function changeVol()
 	local cmd = "wpctl get-volume @DEFAULT_SINK@"
 	awful.spawn.easy_async(cmd, function(stdout, _, _, _)
 		local _, strNum = stdout:match("(%a+:)%s(%d%p%d+)")
-		local num = tonumber(strNum)
+		local num = tonumber(strNum) or 0
 		local icon = beautiful.volume_low
 		local fontcolor = beautiful.widget_good
 		if num >= 0.66 then
