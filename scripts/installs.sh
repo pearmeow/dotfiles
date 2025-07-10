@@ -40,7 +40,7 @@ packages+=" ncmpcpp"
 packages+=" btop"
 
 # Replacement for ls, cat, neofetch, and grep
-packages+=" lsd, bat, fastfetch, ripgrep"
+packages+=" lsd bat fastfetch ripgrep"
 
 # Window manager + notification daemon + bar + background image
 packages+=" awesome"
