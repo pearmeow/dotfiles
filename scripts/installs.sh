@@ -128,7 +128,12 @@ sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d
 # Copy awesome and alacritty configs into .config
 cp -r ../config/awesome ~/.config/
 cp -r ../config/alacritty ~/.config/
+
+# Copy sddm configs into their respective places
 mkdir -p /usr/share/sddm/themes/
 sudo cp -r ../config/sddm/where_is_my_sddm_theme/ /usr/share/sddm/themes/
 mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
+
+# Copy templates for editing files
+cp -r ../templates ~/
