@@ -82,6 +82,9 @@ packages+=" dex"
 # Configure logitech mice
 packages+=" solaar"
 
+# Sddm theme dependency
+packages+=" qt6-5compat"
+
 # AUR (yay)
 yaypackages=""
 # Backlight
@@ -129,7 +132,7 @@ cp -r ../config/rofi ~/.config/
 
 # Copy sddm configs into their respective places
 sudo mkdir -p /usr/share/sddm/themes/
-sudo cp -r ../config/sddm/where_is_my_sddm_theme/ /usr/share/sddm/themes/
+sudo cp -r ../config/sddm/where-is-my-sddm-theme/ /usr/share/sddm/themes/
 sudo mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 systemctl --user enable ssh-agent.service
