@@ -2,6 +2,8 @@
 
 # Before you install
 # Make sure yay is installed from the git repo
+# THIS SCRIPT ASSUMES YOUR USERNAME IS PEARMEOW
+# AND THAT YOU ARE IN THE DIRECTORY OF THE SCRIPT
 
 # Package variable so everything can be installed in one command later
 packages=""
@@ -120,15 +122,17 @@ sudo cp ../config/conf/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
 # Configure wifi card to not shut down randomly
 sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
 
-# Copy awesome and alacritty configs into .config
+# Copy awesome alacritty, and rofi configs into .config
 cp -r ../config/awesome ~/.config/
 cp -r ../config/alacritty ~/.config/
+cp -r ../config/rofi ~/.config/
 
 # Copy sddm configs into their respective places
-mkdir -p /usr/share/sddm/themes/
+sudo mkdir -p /usr/share/sddm/themes/
 sudo cp -r ../config/sddm/where_is_my_sddm_theme/ /usr/share/sddm/themes/
-mkdir -p /etc/sddm.conf.d/
+sudo mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
+systemctl --user enable ssh-agent.service
 
 # Copy templates for editing files
 cp -r ../templates ~/
