@@ -103,11 +103,6 @@ sudo gpasswd -a pearmeow realtime
 # Set background image
 # feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
-# Time
-sudo timedatectl set-ntp true
-sudo timedatectl set-timezone US/Eastern
-sudo hwclock --systohc --utc
-
 # Set up development environment
 mkdir ~/repos
 cp ../zshrc ~/.zshrc
