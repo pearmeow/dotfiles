@@ -9,6 +9,7 @@ export LC_ALL=en_US.UTF-8
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 export CM_LAUNCHER=rofi
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
