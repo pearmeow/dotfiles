@@ -136,3 +136,8 @@ systemctl --user enable ssh-agent.service
 
 # Copy templates for editing files
 cp -r ../templates ~/
+
+# Git configuration
+git config --global user.email perryhuang2015@gmail.com
+git config --global user.name Perry Huang
+git config --global core.excludesfile /home/pearmeow/.gitignore_global
