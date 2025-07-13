@@ -48,5 +48,5 @@ This is an early version. Many things are still incomplete.
     <li> Wallpaper setter: feh (feh --bg-scale dotfiles/themes/katana.jpg, spawnOnce ~/.fehbg &)</li>
     <li> Backlight control: light (light aur, only for laptop)</li>
     <li> Power management: btop (btop)</li>
-    <li> Clipboard: clipmenu (clipmenu, env: CM_LAUNCHER=rofi, sudo systemctl --user enable clipmenud.service)</li>
+    <li> Clipboard: xsel </li>
 </ul>
