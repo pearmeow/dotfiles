@@ -35,6 +35,8 @@ sudo cp -r ../config/sddm/where-is-my-sddm-theme/ /usr/share/sddm/themes/
 sudo mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 
+# Copy amdgpu power rules to fix flickering
+sudo cp 30-amdgpu-power.rules /etc/udev/rules.d
 
 # Copy templates for editing files
 cp -r ../templates ~/
