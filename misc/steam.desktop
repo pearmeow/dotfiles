@@ -3,4 +3,5 @@
 Exec=steam -system-composer
 Type=Application
 Categories=Gaming
-Name=Steam++
+Name=Steam
+Icon=steam
