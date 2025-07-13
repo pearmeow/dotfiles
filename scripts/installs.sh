@@ -39,7 +39,10 @@ packages+=" flameshot"
 packages+=" ncmpcpp"
 
 # And music downloader
-packages+= " yt-dlp"
+packages+=" yt-dlp"
+
+# And mpd server
+packages+=" mpd"
 
 # System overview
 packages+=" btop"
