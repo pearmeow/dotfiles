@@ -1,3 +1,4 @@
 # Fix for flickering after reboot
+# Also fixes mouse lagging
 # Lives in /etc/udev/rules.d/
 ACTION=="add", SUBSYSTEM=="drm", DRIVERS=="amdgpu", ATTR{device/power_dpm_force_performance_level}="high"
