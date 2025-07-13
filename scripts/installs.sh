@@ -38,6 +38,9 @@ packages+=" flameshot"
 # Music player
 packages+=" ncmpcpp"
 
+# And music downloader
+packages+= " yt-dlp"
+
 # System overview
 packages+=" btop"
 
