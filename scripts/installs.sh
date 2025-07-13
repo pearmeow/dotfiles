@@ -85,6 +85,12 @@ packages+=" solaar"
 # Sddm theme dependency
 packages+=" qt6-5compat"
 
+# Steam for video games
+packages+=" steam"
+
+# Xournal++ for drawing
+packages+=" xournalpp"
+
 # AUR (yay)
 yaypackages=""
 # Backlight
