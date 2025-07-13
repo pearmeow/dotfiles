@@ -23,8 +23,8 @@ packages+=" nautilus"
 # Text editor
 packages+=" neovim"
 
-# Compositor if not on Wayland
-packages+=" picom"
+# Compositor
+# packages+=" picom"
 
 # Display manager
 packages+=" sddm"
@@ -64,7 +64,7 @@ packages+=" xsel"
 # Audio
 packages+=" pipewire-alsa pipewire-pulse"
 
-# Lock
+# Lock  TODO: change lock mechanism
 packages+=" xss-lock i3lock"
 
 # Fonts
@@ -96,51 +96,3 @@ yaypackages+=" batsignal"
 
 sudo pacman -S --needed $packages
 yay -S --needed $yaypackages
-
-# Low battery
-systemctl --user enable batsignal.service
-# Audio with wpctl
-systemctl --user enable wireplumber.service
-# Display manager
-sudo systemctl enable sddm.service
-# Add self to realtime group for good audio
-sudo gpasswd -a pearmeow realtime
-# Set background image
-# feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
-
-# Set up development environment
-mkdir ~/repos
-cp ../zshrc ~/.zshrc
-cp ../clang-format ~/.clang-format
-cp ../gitignore_global ~/.gitignore_global
-
-# Make dhcpcd run in the background to boot faster
-sudo mkdir /etc/systemd/system/dhcpcd@.service.d/
-sudo cp ../config/conf/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
-
-# Configure mouse and keyboard behavior
-sudo cp ../config/conf/00-keyboard.conf /etc/X11/xorg.conf.d/
-sudo cp ../config/conf/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
-
-# Configure wifi card to not shut down randomly
-sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
-
-# Copy awesome alacritty, and rofi configs into .config
-cp -r ../config/awesome ~/.config/
-cp -r ../config/alacritty ~/.config/
-cp -r ../config/rofi ~/.config/
-
-# Copy sddm configs into their respective places
-sudo mkdir -p /usr/share/sddm/themes/
-sudo cp -r ../config/sddm/where-is-my-sddm-theme/ /usr/share/sddm/themes/
-sudo mkdir -p /etc/sddm.conf.d/
-sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
-systemctl --user enable ssh-agent.service
-
-# Copy templates for editing files
-cp -r ../templates ~/
-
-# Git configuration
-git config --global user.email perryhuang2015@gmail.com
-git config --global user.name Perry Huang
-git config --global core.excludesfile /home/pearmeow/.gitignore_global
