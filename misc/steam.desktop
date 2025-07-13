@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=steam -system-composer
+Type=Application
+Categories=Gaming
+Name=Steam++
