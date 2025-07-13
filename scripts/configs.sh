@@ -47,4 +47,4 @@ git config --global user.name Perry Huang
 git config --global core.excludesfile ~/.gitignore_global
 
 # Misc command
-sudo gpasswd -a pearmeow realtime
+sudo gpasswd -a pearmeow realtime mpd
