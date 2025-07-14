@@ -341,7 +341,7 @@ battery_widget:connect_signal("mouse::leave", function()
 end)
 
 local brightness_icon = wibox.widget({
-	markup = beautiful.brightness,
+	markup = beautiful.brightness_off,
 	font = beautiful.font_nosize .. "34",
 	widget = wibox.widget.textbox,
 })

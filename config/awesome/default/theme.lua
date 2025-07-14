@@ -105,8 +105,11 @@ theme.volume_low = "󰕿"
 theme.volume_medium = "󰖀"
 theme.volume_high = "󰕾"
 
--- Brightness icon
-theme.brightness = "󰃞"
+-- Brightness icons
+theme.brightness_off = "󰃞"
+theme.brightness_low = "󰃝"
+theme.brightness_medium = "󰃟"
+theme.brightness_high = "󰃠"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"
