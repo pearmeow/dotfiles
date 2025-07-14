@@ -122,7 +122,7 @@ local mytextclock = wibox.widget({
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
-	fg = beautiful.bar_fg,
+	fg = beautiful.widget_unaffected,
 	widget = wibox.container.background,
 	shape = gears.shape.rectangle,
 	shape_border_width = beautiful.widget_border_width,
@@ -139,7 +139,7 @@ end)
 local ram_icon = wibox.widget({
 	markup = beautiful.ram,
 	widget = wibox.widget.textbox,
-	font = beautiful.font_nosize .. "30",
+	font = beautiful.font_nosize .. "40",
 })
 
 local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
@@ -202,7 +202,7 @@ end)
 local cpu_icon = wibox.widget({
 	markup = beautiful.cpu,
 	widget = wibox.widget.textbox,
-	font = beautiful.font_nosize .. "28",
+	font = beautiful.font_nosize .. "34",
 })
 
 local maincpu = {}
