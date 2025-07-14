@@ -146,10 +146,6 @@ local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
 	local _, _, _, cacheuse, _, memuse, _, memfree =
 		stdout:match("(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+")
 	local usage = memuse / (memuse + cacheuse + memfree)
-	local padding = ""
-	if usage < 0.1 then
-		padding = " "
-	end
 	if usage < 0.33 then
 		ram_widget.fg = beautiful.widget_good
 	elseif usage < 0.66 then
@@ -157,7 +153,15 @@ local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
 	else
 		ram_widget.fg = beautiful.widget_critical
 	end
-	widget:set_markup("[RAM] " .. padding .. math.floor(usage * 1000) / 10 .. "%")
+
+	local percentage = math.floor(usage * 1000) / 10
+	local zeropadding = ""
+	if usage == 1.00 then
+		percentage = 100
+	elseif usage < 0.1 then
+		zeropadding = "0"
+	end
+	widget:set_markup("[RAM] " .. percentage .. zeropadding .. "%")
 end)
 
 ram_widget = wibox.widget({
@@ -211,10 +215,6 @@ local cpu_percent = awful.widget.watch("grep --max-count=1 '^cpu.' /proc/stat", 
 	local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
 	maincpu["total_prev"] = total
 	maincpu["idle_prev"] = idle
-	local padding = ""
-	if diff_usage < 10 then
-		padding = " "
-	end
 	if diff_usage < 33 then
 		cpu_widget.fg = beautiful.widget_good
 	elseif diff_usage < 66 then
@@ -222,7 +222,14 @@ local cpu_percent = awful.widget.watch("grep --max-count=1 '^cpu.' /proc/stat", 
 	else
 		cpu_widget.fg = beautiful.widget_critical
 	end
-	widget:set_markup("[CPU] " .. padding .. math.floor(diff_usage * 10) / 10 .. "%")
+	local percentage = math.floor(diff_usage * 10) / 10
+	local zeropadding = ""
+	if diff_usage == 100 then
+		percentage = 100
+	elseif diff_usage < 10 then
+		zeropadding = "0"
+	end
+	widget:set_markup("[CPU] " .. percentage .. zeropadding .. "%")
 end)
 
 cpu_widget = wibox.widget({
