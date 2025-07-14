@@ -9,11 +9,11 @@ local gears = require("gears")
 local themes_path = "/home/pearmeow/.config/awesome/"
 
 local theme = {}
-
+theme.font_nosize = "JetBrainsMono Nerd Font Mono Bold "
 theme.font = "JetBrainsMono Nerd Font Mono Bold 16"
 theme.bar_bg = "#282424"
 theme.bar_fg = "#FFFFFF"
-theme.bar_border_width = 10
+theme.bar_border_width = dpi(10)
 theme.widget_border = "#FFFFFF"
 theme.widget_hover = "#008b8b"
 
@@ -21,6 +21,8 @@ theme.widget_unaffected = "#00ffff"
 theme.widget_good = "#90ee90"
 theme.widget_normal = "#ffff00"
 theme.widget_critical = "#ff0000"
+theme.widget_text_margins = dpi(15)
+theme.widget_icon_margins = dpi(10)
 theme.widget_border_width = dpi(2)
 
 theme.bg_normal = "#222222"
@@ -83,24 +85,28 @@ theme.notification_border_width = dpi(3)
 -- Define the image to load
 theme.wallpaper = themes_path .. "default/background.jpg"
 
--- Volume icons
-theme.volume_mute = themes_path .. "default/icons/volume-mute.png"
-theme.volume_variant_mute = themes_path .. "default/icons/volume-variant-mute.png"
-theme.volume_low = themes_path .. "default/icons/volume-low.png"
-theme.volume_medium = themes_path .. "default/icons/volume-medium.png"
-theme.volume_high = themes_path .. "default/icons/volume-high.png"
+-- CPU and RAM icons
+theme.cpu = ""
+theme.ram = ""
 
 -- Battery icons
-theme.battery_100 = themes_path .. "default/icons/battery-100.png"
-theme.battery_80 = themes_path .. "default/icons/battery-80.png"
-theme.battery_60 = themes_path .. "default/icons/battery-60.png"
-theme.battery_40 = themes_path .. "default/icons/battery-40.png"
-theme.battery_20 = themes_path .. "default/icons/battery-20.png"
-theme.battery_critical = themes_path .. "default/icons/battery-critical.png"
-theme.battery_charging = themes_path .. "default/icons/battery-charging.png"
+theme.battery_100 = "󰁹"
+theme.battery_80 = "󰂁"
+theme.battery_60 = "󰁿"
+theme.battery_40 = "󰁽"
+theme.battery_20 = "󰁻"
+theme.battery_critical = "󰂃"
+theme.battery_charging = "󰂄"
+
+-- Volume icons
+theme.volume_mute = "󰝟"
+theme.volume_variant_mute = "󰸈"
+theme.volume_low = "󰕿"
+theme.volume_medium = "󰖀"
+theme.volume_high = "󰕾"
 
 -- Brightness icon
-theme.brightness = themes_path .. "default/icons/brightness.png"
+theme.brightness = "󰃞"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path .. "default/layouts/fairhw.png"

@@ -117,8 +117,8 @@ local mytextclock = wibox.widget({
 				layout = wibox.layout.fixed.horizontal,
 			},
 			widget = wibox.container.margin,
-			left = 10,
-			right = 10,
+			left = beautiful.widget_text_margins,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -136,6 +136,12 @@ mytextclock:connect_signal("mouse::leave", function()
 	mytextclock.bg = beautiful.bar_bg
 end)
 
+local ram_icon = wibox.widget({
+	markup = beautiful.ram,
+	widget = wibox.widget.textbox,
+	font = beautiful.font_nosize .. "30",
+})
+
 local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
 	local _, _, _, cacheuse, _, memuse, _, memfree =
 		stdout:match("(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+(%w+)%s+(%d+)%s+")
@@ -151,19 +157,27 @@ local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
 	else
 		ram_widget.fg = beautiful.widget_critical
 	end
-	widget:set_markup(" [RAM] " .. padding .. math.floor(usage * 1000) / 10 .. "%")
+	widget:set_markup("[RAM] " .. padding .. math.floor(usage * 1000) / 10 .. "%")
 end)
 
 ram_widget = wibox.widget({
 	{
 		{
 			{
-				ram_percent,
+				ram_icon,
 				layout = wibox.layout.fixed.horizontal,
-				font = beautiful.font,
 			},
 			widget = wibox.container.margin,
-			right = 10,
+			right = beautiful.widget_icon_margins,
+			left = beautiful.widget_text_margins,
+		},
+		{
+			{
+				ram_percent,
+				layout = wibox.layout.fixed.horizontal,
+			},
+			widget = wibox.container.margin,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -180,6 +194,12 @@ end)
 ram_widget:connect_signal("mouse::leave", function()
 	ram_widget.bg = beautiful.bar_bg
 end)
+
+local cpu_icon = wibox.widget({
+	markup = beautiful.cpu,
+	widget = wibox.widget.textbox,
+	font = beautiful.font_nosize .. "28",
+})
 
 local maincpu = {}
 local cpu_percent = awful.widget.watch("grep --max-count=1 '^cpu.' /proc/stat", 10, function(widget, stdout)
@@ -202,19 +222,27 @@ local cpu_percent = awful.widget.watch("grep --max-count=1 '^cpu.' /proc/stat", 
 	else
 		cpu_widget.fg = beautiful.widget_critical
 	end
-	widget:set_markup(" [CPU] " .. padding .. math.floor(diff_usage * 10) / 10 .. "%")
+	widget:set_markup("[CPU] " .. padding .. math.floor(diff_usage * 10) / 10 .. "%")
 end)
 
 cpu_widget = wibox.widget({
 	{
 		{
 			{
-				cpu_percent,
+				cpu_icon,
 				layout = wibox.layout.fixed.horizontal,
-				font = beautiful.font,
 			},
 			widget = wibox.container.margin,
-			right = 10,
+			right = beautiful.widget_icon_margins,
+			left = beautiful.widget_text_margins,
+		},
+		{
+			{
+				cpu_percent,
+				layout = wibox.layout.fixed.horizontal,
+			},
+			widget = wibox.container.margin,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -258,9 +286,9 @@ local function makeBar(num)
 end
 
 local battery_icon = wibox.widget({
-	image = beautiful.battery_100,
-	resize = true,
-	widget = wibox.widget.imagebox,
+	markup = beautiful.battery_charging,
+	font = beautiful.font_nosize .. "22",
+	widget = wibox.widget.textbox,
 })
 
 local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
@@ -279,15 +307,22 @@ local function changeBattery() end
 
 local battery_widget = wibox.widget({
 	{
-		battery_icon,
+		{
+			{
+				battery_icon,
+				layout = wibox.layout.fixed.horizontal,
+			},
+			widget = wibox.container.margin,
+			left = beautiful.widget_text_margins,
+			right = beautiful.widget_icon_margins,
+		},
 		{
 			{
 				battery_bar,
 				layout = wibox.layout.fixed.horizontal,
-				font = beautiful.font,
 			},
 			widget = wibox.container.margin,
-			right = 10,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -305,29 +340,36 @@ battery_widget:connect_signal("mouse::leave", function()
 	battery_widget.bg = beautiful.bar_bg
 end)
 
+local brightness_icon = wibox.widget({
+	markup = beautiful.brightness,
+	font = beautiful.font_nosize .. "34",
+	widget = wibox.widget.textbox,
+})
+
 local brightness_bar = wibox.widget({
 	-- Ascii for bar ▓▒
 	markup = "[▓▓▓▓▓▒▒▒▒▒] 50%",
 	widget = wibox.widget.textbox,
 })
 
-local brightness_icon = wibox.widget({
-	image = beautiful.brightness,
-	resize = true,
-	widget = wibox.widget.imagebox,
-})
-
 local brightness_widget = wibox.widget({
 	{
-		brightness_icon,
+		{
+			{
+				brightness_icon,
+				layout = wibox.layout.fixed.horizontal,
+			},
+			widget = wibox.container.margin,
+			left = beautiful.widget_text_margins,
+			right = beautiful.widget_icon_margins,
+		},
 		{
 			{
 				brightness_bar,
 				layout = wibox.layout.fixed.horizontal,
-				font = beautiful.font,
 			},
 			widget = wibox.container.margin,
-			right = 10,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -365,9 +407,9 @@ brightness_widget:buttons(gears.table.join(
 ))
 
 local vol_icon = wibox.widget({
-	image = beautiful.volume_low,
-	resize = true,
-	widget = wibox.widget.imagebox,
+	markup = beautiful.volume_medium,
+	font = beautiful.icon_font,
+	widget = wibox.widget.textbox,
 })
 
 local vol_bar = wibox.widget({
@@ -378,15 +420,22 @@ local vol_bar = wibox.widget({
 
 local audio_widget = wibox.widget({
 	{
-		vol_icon,
+		{
+			{
+				vol_icon,
+				layout = wibox.layout.fixed.horizontal,
+			},
+			widget = wibox.container.margin,
+			left = beautiful.widget_text_margins,
+			right = beautiful.widget_icon_margins,
+		},
 		{
 			{
 				vol_bar,
 				layout = wibox.layout.fixed.horizontal,
-				font = beautiful.font,
 			},
 			widget = wibox.container.margin,
-			right = 10,
+			right = beautiful.widget_text_margins,
 		},
 		layout = wibox.layout.fixed.horizontal,
 	},
@@ -402,25 +451,33 @@ local function changeVol()
 	awful.spawn.easy_async(cmd, function(stdout)
 		local _, strNum = stdout:match("(%a+:)%s(%d%p%d+)")
 		local num = tonumber(strNum) or 0.28
-		local icon = beautiful.volume_low
+		local icon = ""
 		local fontcolor = beautiful.widget_good
-		if num >= 0.66 then
+		if num >= 0.60 then
 			icon = beautiful.volume_high
 			fontcolor = beautiful.widget_critical
-		elseif num > 0.33 then
+			vol_icon.font = beautiful.font_nosize .. "34"
+		elseif num > 0.40 then
 			icon = beautiful.volume_medium
 			fontcolor = beautiful.widget_normal
+			vol_icon.font = beautiful.font_nosize .. "28"
+		elseif num > 0.20 then
+			icon = beautiful.volume_medium
+			vol_icon.font = beautiful.font_nosize .. "28"
+		elseif num > 0 then
+			icon = beautiful.volume_low
+			vol_icon.font = beautiful.font_nosize .. "20"
+		else
+			icon = beautiful.volume_variant_mute
+			vol_icon.font = beautiful.font_nosize .. "30"
 		end
 		if stdout:len() > 13 then
-			if num < 0.33 then
-				icon = beautiful.volume_variant_mute
-			else
-				icon = beautiful.volume_mute
-			end
+			icon = beautiful.volume_mute
+			vol_icon.font = beautiful.font_nosize .. "40"
 		end
 		audio_widget.fg = fontcolor
-		vol_icon.image = icon
-		vol_bar.text = makeBar(num)
+		vol_icon:set_markup(icon)
+		vol_bar:set_markup(makeBar(num))
 	end)
 end
 
@@ -480,8 +537,8 @@ awful.screen.connect_for_each_screen(function(s)
 					},
 					layout = wibox.layout.fixed.horizontal,
 				},
-				left = 15,
-				right = 15,
+				left = beautiful.widget_text_margins,
+				right = beautiful.widget_text_margins,
 				widget = wibox.container.margin,
 			},
 			id = "background_role",
