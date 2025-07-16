@@ -50,6 +50,9 @@ packages+=" btop"
 # Replacement for ls, cat, neofetch, and grep
 packages+=" lsd bat bat-extras fastfetch ripgrep"
 
+# Git diff using delta
+packages+=" git-delta"
+
 # Window manager + notification daemon + bar + background image
 packages+=" awesome"
 

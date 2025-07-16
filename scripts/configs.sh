@@ -10,6 +10,7 @@ mkdir ~/repos
 cp ../zshrc ~/.zshrc
 cp ../clang-format ~/.clang-format
 cp ../gitignore_global ~/.gitignore_global
+cp ../gitconfig ~/.gitconfig
 
 # Copy awesome alacritty, and rofi configs into .config
 cp -r ../config/awesome ~/.config/
