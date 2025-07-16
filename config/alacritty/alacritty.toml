@@ -4,6 +4,6 @@ normal = { family = "JetBrainsMonoNerdFontMono", style = "Regular" }
 
 [general]
 import = [ "~/.config/alacritty/themes/snazzy.toml"]
-# [window]
-# dimensions = { columns = 120, lines = 40 }
-# startup_mode = "Maximized"
+
+[window]
+padding = {x = 5, y = 0}
