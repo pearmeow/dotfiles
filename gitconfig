@@ -1,0 +1,22 @@
+[user]
+	email = perryhuang2015@gmail.com
+	name = Perry Huang
+[core]
+	editor = nvim
+	pager = bat --paging=always --plain
+	excludesfile = ~/.gitignore_global
+
+[init]
+	defaultBranch = main
+
+[diff]
+	tool = batdiff
+
+[difftool "batdiff"]
+	cmd = batdiff "$LOCAL" "$REMOTE"
+
+[pager]
+	diff = batdiff
+
+[color]
+	ui = auto
