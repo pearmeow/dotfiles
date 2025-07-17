@@ -6,7 +6,7 @@
 # feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
 # Set up development environment
-mkdir ~/repos
+mkdir -p ~/repos
 cp ../zshrc ~/.zshrc
 cp ../clang-format ~/.clang-format
 cp ../gitignore_global ~/.gitignore_global
@@ -19,7 +19,7 @@ cp -r ../config/rofi ~/.config/
 
 # Copy ssh config into .ssh directory
 mkdir -p ~/.ssh
-cp ../config/ssh/ ~/.ssh/config
+cp -r ../config/ssh/ ~/.ssh/config
 
 # Copy templates for editing files
 cp -r ../templates ~/
@@ -29,7 +29,7 @@ mkdir -p ~/.local/share/applications/
 cp ../misc/steam.desktop ~/.local/share/applications/
 
 # Make dhcpcd run in the background to boot faster
-sudo mkdir /etc/systemd/system/dhcpcd@.service.d/
+sudo mkdir -p /etc/systemd/system/dhcpcd@.service.d/
 sudo cp ../config/conf/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
 
 # Configure mouse and keyboard behavior
@@ -46,4 +46,4 @@ sudo mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 
 # Copy amdgpu power rules to fix flickering
-sudo cp 30-amdgpu-power.rules /etc/udev/rules.d
+sudo cp ../config/conf/30-amdgpu-power.rules /etc/udev/rules.d
