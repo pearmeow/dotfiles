@@ -50,8 +50,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init("/home/pearmeow/.config/awesome/default/theme.lua")
+-- Laptop
+beautiful.init("/home/pearmeow/.config/awesome/laptop/theme.lua")
+-- Desktop
+-- beautiful.init("/home/pearmeow/.config/awesome/desktop/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "alacritty"
@@ -95,7 +97,7 @@ local function set_wallpaper(s)
 		if type(wallpaper) == "function" then
 			wallpaper = wallpaper(s)
 		end
-		gears.wallpaper.maximized(wallpaper, s, true)
+		gears.wallpaper.maximized(wallpaper, s, false)
 	end
 end
 
@@ -139,7 +141,7 @@ end)
 local ram_icon = wibox.widget({
 	markup = beautiful.ram,
 	widget = wibox.widget.textbox,
-	font = beautiful.font_nosize .. "40",
+	font = beautiful.font_ram,
 })
 
 local ram_percent = awful.widget.watch("free -L", 10, function(widget, stdout)
@@ -202,7 +204,7 @@ end)
 local cpu_icon = wibox.widget({
 	markup = beautiful.cpu,
 	widget = wibox.widget.textbox,
-	font = beautiful.font_nosize .. "34",
+	font = beautiful.font_cpu,
 })
 
 local maincpu = {}
@@ -294,23 +296,35 @@ end
 
 local battery_icon = wibox.widget({
 	markup = beautiful.battery_charging,
-	font = beautiful.font_nosize .. "22",
+	font = beautiful.font_battery_charging,
 	widget = wibox.widget.textbox,
 })
 
 local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
-	local text = ""
-	for _ in stdout:gmatch("unavailable") do
-		text = "[▓▓▓▓▓▓▓▓▓▓] ∞%"
-		widget:set_markup(text)
-		return
+	local num = tonumber(stdout:gmatch("(%d+)%%"))
+	if num == 100 then
+		battery_icon:set_markup(beautiful.battery_100)
+		battery_icon.font = beautiful.font_battery_100
+	elseif num > 80 then
+		battery_icon:set_markup(beautiful.battery_80)
+		battery_icon.font = beautiful.font_battery_80
+	elseif num > 60 then
+		battery_icon = beautiful.battery_60
+		battery_icon:set_markup(beautiful.battery_60)
+		battery_icon.font = beautiful.font_battery_60
+	elseif num > 40 then
+		battery_icon = beautiful.battery_40
+		battery_icon:set_markup(beautiful.battery_40)
+		battery_icon.font = beautiful.font_battery_40
+	elseif num > 20 then
+		battery_icon:set_markup(beautiful.battery_20)
+		battery_icon.font = beautiful.font_battery_20
+	else
+		battery_icon:set_markup(beautiful.battery_critical)
+		battery_icon.font = beautiful.font_battery_critical
 	end
-	--  TODO: make this work for laptop
-	widget:set_markup(text)
+	widget:set_markup(num)
 end)
-
--- TODO: implement this on laptop
-local function changeBattery() end
 
 local battery_widget = wibox.widget({
 	{
@@ -349,7 +363,7 @@ end)
 
 local brightness_icon = wibox.widget({
 	markup = beautiful.brightness_off,
-	font = beautiful.font_nosize .. "34",
+	font = beautiful.font_brightness_off,
 	widget = wibox.widget.textbox,
 })
 
@@ -397,8 +411,17 @@ end)
 local function changeBrightness()
 	local cmd = "light -G"
 	awful.spawn.easy_async(cmd, function(stdout)
-		local num = tonumber(stdout:match("%d%p%d+"))
-		brightness_bar.markup = makeBar(num)
+		local num = tonumber(stdout:match("%d+"))
+		if num > 67 then
+			brightness_icon.markup = beautiful.brightness_high
+		elseif num > 34 then
+			brightness_icon.markup = beautiful.brightness_medium
+		elseif num > 1 then
+			brightness_icon.markup = beautiful.brightness_low
+		else
+			brightness_icon.markup = beautiful.brightness_off
+		end
+		brightness_bar.markup = makeBar(num / 100)
 	end)
 end
 
@@ -425,7 +448,7 @@ local vol_bar = wibox.widget({
 	widget = wibox.widget.textbox,
 })
 
-local audio_widget = wibox.widget({
+local volume_widget = wibox.widget({
 	{
 		{
 			{
@@ -463,39 +486,39 @@ local function changeVol()
 		if num >= 0.60 then
 			icon = beautiful.volume_high
 			fontcolor = beautiful.widget_critical
-			vol_icon.font = beautiful.font_nosize .. "34"
+			vol_icon.font = beautiful.font_volume_high
 		elseif num > 0.40 then
 			icon = beautiful.volume_medium
 			fontcolor = beautiful.widget_normal
-			vol_icon.font = beautiful.font_nosize .. "28"
+			vol_icon.font = beautiful.font_volume_medium
 		elseif num > 0.20 then
 			icon = beautiful.volume_medium
-			vol_icon.font = beautiful.font_nosize .. "28"
+			vol_icon.font = beautiful.font_volume_medium
 		elseif num > 0 then
 			icon = beautiful.volume_low
-			vol_icon.font = beautiful.font_nosize .. "20"
+			vol_icon.font = beautiful.font_volume_low
 		else
 			icon = beautiful.volume_variant_mute
-			vol_icon.font = beautiful.font_nosize .. "30"
+			vol_icon.font = beautiful.font_volume_variant_mute
 		end
 		if stdout:len() > 13 then
 			icon = beautiful.volume_mute
-			vol_icon.font = beautiful.font_nosize .. "40"
+			vol_icon.font = beautiful.font_volume_mute
 		end
-		audio_widget.fg = fontcolor
+		volume_widget.fg = fontcolor
 		vol_icon:set_markup(icon)
 		vol_bar:set_markup(makeBar(num))
 	end)
 end
 
-audio_widget:connect_signal("mouse::enter", function()
-	audio_widget.bg = beautiful.widget_hover
+volume_widget:connect_signal("mouse::enter", function()
+	volume_widget.bg = beautiful.widget_hover
 end)
-audio_widget:connect_signal("mouse::leave", function()
-	audio_widget.bg = beautiful.bar_bg
+volume_widget:connect_signal("mouse::leave", function()
+	volume_widget.bg = beautiful.bar_bg
 end)
 
-audio_widget:buttons(gears.table.join(
+volume_widget:buttons(gears.table.join(
 	awful.button({}, 1, function()
 		local cmd = "wpctl set-mute @DEFAULT_SINK@ toggle"
 		awful.spawn.easy_async(cmd, changeVol)
@@ -582,7 +605,7 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			battery_widget,
 			separator,
-			audio_widget,
+			volume_widget,
 			separator,
 			brightness_widget,
 		},
@@ -638,7 +661,7 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "s", function()
 		awful.spawn.with_shell("flameshot gui")
 	end, { description = "take screenshot with flameshot", group = "launcher" }),
-	-- Audio keybinds
+	-- Volume keybinds
 	awful.key({}, "XF86AudioRaiseVolume", function()
 		awful.spawn.easy_async("wpctl set-volume -l 1 @DEFAULT_SINK@ 2%+", changeVol)
 	end, { description = "raise volume", group = "awesome" }),
@@ -653,7 +676,7 @@ local globalkeys = gears.table.join(
 		awful.spawn.easy_async("light -A 3", changeBrightness)
 	end, { description = "raise brightness", group = "awesome" }),
 	awful.key({}, "XF86MonBrightnessDown", function()
-		awful.spawn.with_shell("light -U 3", changeBrightness)
+		awful.spawn.easy_async("light -U 3", changeBrightness)
 	end, { description = "lower brightness", group = "awesome" })
 )
 
@@ -865,4 +888,3 @@ awful.spawn.with_shell(
 awful.spawn.easy_async("sleep 1", changeVol)
 changeVol()
 changeBrightness()
-changeBattery()
