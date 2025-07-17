@@ -47,3 +47,7 @@ sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 
 # Copy amdgpu power rules to fix flickering
 sudo cp ../config/conf/30-amdgpu-power.rules /etc/udev/rules.d
+
+# Copy nvidia hook into pacman
+sudo mkdir -p /etc/pacman.d/hooks
+sudo cp ../misc/nvidia.hook /etc/pacman.d/hooks/
