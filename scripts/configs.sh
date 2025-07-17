@@ -19,7 +19,7 @@ cp -r ../config/rofi ~/.config/
 
 # Copy ssh config into .ssh directory
 mkdir -p ~/.ssh
-cp -r ../config/ssh/ ~/.ssh/config
+cp ../config/ssh/config ~/.ssh/config
 
 # Copy templates for editing files
 cp -r ../templates ~/
