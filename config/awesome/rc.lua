@@ -301,7 +301,12 @@ local battery_icon = wibox.widget({
 })
 
 local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
-	local num = tonumber(stdout:gmatch("(%d+)%%"))
+	for _ in stdout:gmatch("unavailable") do
+		text = "[▓▓▓▓▓▓▓▓▓▓] ∞%"
+		widget:set_markup(text)
+		return
+	end
+	local num = tonumber(stdout:match("(%d+)%%"))
 	if num == 100 then
 		battery_icon:set_markup(beautiful.battery_100)
 		battery_icon.font = beautiful.font_battery_100
@@ -323,7 +328,11 @@ local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
 		battery_icon:set_markup(beautiful.battery_critical)
 		battery_icon.font = beautiful.font_battery_critical
 	end
-	widget:set_markup(num)
+	for _ in stdout:gmatch("charged") do
+		battery_icon:set_markup(beautiful.battery_charging)
+		battery_icon.font = beautiful.font_battery_charging
+	end
+	widget:set_markup(makeBar(num / 100))
 end)
 
 local battery_widget = wibox.widget({
