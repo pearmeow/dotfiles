@@ -14,3 +14,5 @@ systemctl --user enable mpd.socket
 sudo systemctl enable sddm.service
 # Periodic trim for ssd wear leveling: more info on archlinux trim page
 sudo systemctl enable fstrim.timer
+# Enable bluetooth
+sudo systemctl enable bluetooth.service

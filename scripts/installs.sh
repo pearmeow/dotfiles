@@ -70,6 +70,9 @@ packages+=" xsel"
 # Wallpaper if not using awesome
 # packages+=" feh"
 
+# Bluetooth
+packages+=" bluez bluez-utils"
+
 # Audio
 packages+=" pipewire-alsa pipewire-pulse"
 
