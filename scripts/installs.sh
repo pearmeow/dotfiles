@@ -2,8 +2,6 @@
 
 # Before you install
 # Make sure yay is installed from the git repo
-# THIS SCRIPT ASSUMES YOUR USERNAME IS PEARMEOW
-# AND THAT YOU ARE IN THE DIRECTORY OF THE SCRIPT
 
 # Package variable so everything can be installed in one command later
 packages=""
