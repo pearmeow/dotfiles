@@ -10,7 +10,7 @@ packages=""
 packages+=" xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xmessage"
 
 # Essentials
-packages+=" make gcc unzip wget fd openssh man"
+packages+=" make gcc unzip wget openssh man"
 
 # Terminal emulator
 packages+=" alacritty"
@@ -45,8 +45,8 @@ packages+=" mpd"
 # System overview
 packages+=" btop"
 
-# Replacement for ls, cat, neofetch, and grep
-packages+=" lsd bat bat-extras fastfetch ripgrep"
+# Replacement for ls, cat, neofetch, grep, and find
+packages+=" lsd bat bat-extras fastfetch ripgrep fd"
 
 # Git diff using delta
 packages+=" git-delta"
