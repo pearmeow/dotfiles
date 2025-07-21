@@ -92,7 +92,7 @@ setopt extendedglob
 # Add wisely, as too many plugins slow down shell startup.
 # source /usr/share/doc/pkgfile/command-not-found.zsh
 
-plugins=(git command-not-found fzf-tab zsh-autosuggestions zsh-syntax-highlighting npm)
+plugins=(git command-not-found fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
