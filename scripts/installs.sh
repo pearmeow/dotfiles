@@ -75,7 +75,7 @@ packages+=" bluez bluez-utils"
 packages+=" pipewire-alsa pipewire-pulse"
 
 # Lock  TODO: change lock mechanism
-packages+=" xss-lock i3lock"
+# packages+=" xss-lock i3lock"
 
 # Fonts
 packages+=" noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd ttf-roboto"
@@ -95,11 +95,11 @@ packages+=" solaar"
 # Sddm theme dependency
 packages+=" qt6-5compat"
 
-# Steam for video games
-packages+=" steam"
-
 # Xournal++ for drawing
 packages+=" xournalpp"
+
+# Keyd for key remapping & other utility
+packages+= "keyd"
 
 # AUR (yay)
 yaypackages=""
