@@ -7,10 +7,10 @@
 
 # Set up development environment
 mkdir -p ~/repos
-cp ../zshrc ~/.zshrc
-cp ../clang-format ~/.clang-format
-cp ../gitignore_global ~/.gitignore_global
-cp ../gitconfig ~/.gitconfig
+cp ../config/home/zshrc ~/.zshrc
+cp ../config/home/clang-format ~/.clang-format
+cp ../config/home/gitignore_global ~/.gitignore_global
+cp ../config/home/gitconfig ~/.gitconfig
 
 # Copy awesome alacritty, and rofi configs into .config
 cp -r ../config/awesome ~/.config/
@@ -22,22 +22,22 @@ mkdir -p ~/.ssh
 cp ../config/ssh/config ~/.ssh/config
 
 # Copy templates for editing files
-cp -r ../templates ~/
+cp -r ../config/home/templates ~/
 
 # Copy steam desktop file to its directory
 mkdir -p ~/.local/share/applications/
-cp ../misc/steam.desktop ~/.local/share/applications/
+cp ../config/misc/steam.desktop ~/.local/share/applications/
 
 # Make dhcpcd run in the background to boot faster
 sudo mkdir -p /etc/systemd/system/dhcpcd@.service.d/
-sudo cp ../config/conf/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
+sudo cp ../config/misc/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
 
 # Configure mouse and keyboard behavior
-sudo cp ../config/conf/00-keyboard.conf /etc/X11/xorg.conf.d/
-sudo cp ../config/conf/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
+sudo cp ../config/misc/00-keyboard.conf /etc/X11/xorg.conf.d/
+sudo cp ../config/misc/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
 
 # Configure wifi card to not shut down randomly
-sudo cp ../config/conf/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
+sudo cp ../config/misc/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
 
 # Copy sddm configs into their respective places
 sudo mkdir -p /usr/share/sddm/themes/
@@ -46,8 +46,8 @@ sudo mkdir -p /etc/sddm.conf.d/
 sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 
 # Copy amdgpu power rules to fix flickering
-sudo cp ../config/conf/30-amdgpu-power.rules /etc/udev/rules.d
+sudo cp ../config/misc/30-amdgpu-power.rules /etc/udev/rules.d
 
 # Copy nvidia hook into pacman
 sudo mkdir -p /etc/pacman.d/hooks
-sudo cp ../misc/nvidia.hook /etc/pacman.d/hooks/
+sudo cp ../config/misc/nvidia.hook /etc/pacman.d/hooks/
