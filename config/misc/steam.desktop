@@ -1,0 +1,7 @@
+# Lives in ~/.local/share/applications/
+[Desktop Entry]
+Exec=steam -system-composer
+Type=Application
+Categories=Gaming
+Name=Steam
+Icon=steam
