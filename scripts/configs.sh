@@ -45,6 +45,9 @@ sudo cp ../config/misc/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
 # Configure wifi card to not shut down randomly
 sudo cp ../config/misc/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
 
+# Add keyd fix for trackpad interfering with input
+sudo cp ../config/misc/local-overrides.quirks /etc/libinput/
+
 # Make dhcpcd run in the background to boot faster
 sudo mkdir -p /etc/systemd/system/dhcpcd@.service.d/
 sudo cp ../config/misc/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
