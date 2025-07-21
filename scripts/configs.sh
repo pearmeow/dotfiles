@@ -36,6 +36,9 @@ sudo cp ../config/misc/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
 sudo cp ../config/misc/00-keyboard.conf /etc/X11/xorg.conf.d/
 sudo cp ../config/misc/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
 
+# Configure polkit to use root password
+sudo cp ../config/misc/49-rootpw-global.rules /etc/polkit-1/rules.d/
+
 # Configure wifi card to not shut down randomly
 sudo cp ../config/misc/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
 
