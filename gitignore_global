@@ -1,3 +1,0 @@
-# Set this to be part of git's core.excludefiles
-# and put a . in front when moving it to the local filesystem
-.histfile
