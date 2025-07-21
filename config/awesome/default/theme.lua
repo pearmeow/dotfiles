@@ -6,7 +6,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local gears = require("gears")
 
-local themes_path = "/home/pearmeow/.config/awesome/"
+local themes_path = "~/.config/awesome/"
 
 local theme = {}
 theme.font_nosize = "JetBrainsMono Nerd Font Mono Bold "

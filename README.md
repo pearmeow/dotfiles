@@ -5,4 +5,3 @@ Notes
 -----
 - Scripts are expected to be run in the scripts directory. Not doing so may result in things breaking.
 - misc.sh adds groups to the user "pearmeow", which is hardcoded.
-- Some of the paths in awesomewm's config are hardcoded to /home/pearmeow/...

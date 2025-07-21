@@ -51,9 +51,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- Laptop
-beautiful.init("/home/pearmeow/.config/awesome/laptop/theme.lua")
+-- beautiful.init("~/.config/awesome/laptop/theme.lua")
 -- Desktop
--- beautiful.init("/home/pearmeow/.config/awesome/desktop/theme.lua")
+beautiful.init("~/.config/awesome/desktop/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "alacritty"
