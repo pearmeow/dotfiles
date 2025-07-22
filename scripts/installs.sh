@@ -12,6 +12,9 @@ packages+=" xorg-server xorg-apps xorg-xinit xorg-twm xorg-xclock xterm xorg-xme
 # Essentials
 packages+=" make gcc unzip wget openssh man"
 
+# C++ debugging
+packages+=" gdb"
+
 # Terminal emulator
 packages+=" alacritty"
 
