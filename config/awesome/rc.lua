@@ -314,11 +314,9 @@ local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
 		battery_icon:set_markup(beautiful.battery_80)
 		battery_icon.font = beautiful.font_battery_80
 	elseif num > 60 then
-		battery_icon = beautiful.battery_60
 		battery_icon:set_markup(beautiful.battery_60)
 		battery_icon.font = beautiful.font_battery_60
 	elseif num > 40 then
-		battery_icon = beautiful.battery_40
 		battery_icon:set_markup(beautiful.battery_40)
 		battery_icon.font = beautiful.font_battery_40
 	elseif num > 20 then
@@ -669,6 +667,9 @@ local globalkeys = gears.table.join(
 	-- Flameshot
 	awful.key({ modkey, "Shift" }, "s", function()
 		awful.spawn.with_shell("flameshot gui")
+	end, { description = "take screenshot with flameshot", group = "launcher" }),
+	awful.key({}, "Print", function()
+		awful.spawn.with_shell("flameshot full --clipboard")
 	end, { description = "take screenshot with flameshot", group = "launcher" }),
 	-- Volume keybinds
 	awful.key({}, "XF86AudioRaiseVolume", function()
