@@ -18,6 +18,7 @@ cp -r ../config/alacritty ~/.config/
 cp -r ../config/awesome ~/.config/
 cp -r ../config/mpd ~/.config/
 cp -r ../config/ncmpcpp ~/.config/
+cp -r ../config/picom ~/.config/
 cp -r ../config/rofi ~/.config/
 
 # Copy sddm configs into their respective places
