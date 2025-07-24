@@ -102,7 +102,7 @@ packages+=" qt6-5compat"
 packages+=" xournalpp"
 
 # Keyd for key remapping & other utility
-packages+= "keyd"
+packages+=" keyd"
 
 # AUR (yay)
 yaypackages=""
