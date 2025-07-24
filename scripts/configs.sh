@@ -29,7 +29,7 @@ sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
 
 # Copy ssh config into .ssh directory
 mkdir -p ~/.ssh
-cp ../config/ssh/config ~/.ssh/config
+cp ../config/ssh/config ~/.ssh/
 
 # Configure mouse
 sudo cp ../config/misc/00-keyboard.conf /etc/X11/xorg.conf.d/
