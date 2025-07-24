@@ -706,7 +706,8 @@ local clientkeys = gears.table.join(
 	end, { description = "increase the number of master clients", group = "layout" }),
 	awful.key({ modkey, "Shift" }, "l", function()
 		awful.tag.incnmaster(-1, nil, true)
-	end, { description = "decrease the number of master clients", group = "layout" })
+	end, { description = "decrease the number of master clients", group = "layout" }),
+	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" })
 )
 
 -- Bind all key numbers to tags.
@@ -817,6 +818,7 @@ awful.rules.rules = {
 			name = {
 				"Event Tester", -- xev.
 				"Steam Settings",
+				"zoom",
 			},
 			role = {
 				"AlarmWindow", -- Thunderbird's calendar.
