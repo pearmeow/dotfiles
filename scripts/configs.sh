@@ -21,6 +21,9 @@ cp -r ../config/ncmpcpp ~/.config/
 cp -r ../config/picom ~/.config/
 cp -r ../config/rofi ~/.config/
 
+# Copy keyd config to where it belongs
+sudo cp ../config/keyd/default.conf /etc/keyd/
+
 # Copy sddm configs into their respective places
 sudo mkdir -p /usr/share/sddm/themes/
 sudo cp -r ../config/sddm/where-is-my-sddm-theme/ /usr/share/sddm/themes/
