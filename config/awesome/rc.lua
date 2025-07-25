@@ -900,7 +900,7 @@ awful.spawn.with_shell(
 )
 
 -- Need to run changevol twice and with a delay because of wireplumber issues
-awful.spawn.with_shell("./scripts/autorun.sh")
+awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
 awful.spawn.easy_async("sleep 1", changeVol)
 changeVol()
 changeBrightness()
