@@ -112,6 +112,8 @@ yaypackages+=" light"
 yaypackages+=" brave-bin vesktop ttf-times-new-roman"
 # Signal for low battery
 yaypackages+=" batsignal"
+# Locking mechanism
+yaypackages+=" i3lock-color"
 
 sudo pacman -S --needed $packages
 yay -S --needed $yaypackages

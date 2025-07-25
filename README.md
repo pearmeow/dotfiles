@@ -1,5 +1,5 @@
 <h1 align="center">Arch dotfiles</h1>
-Welcome to the dotfiles of pearmeow. Everything should work when running the scripts, but currently there is no locking mechanism.
+Welcome to the dotfiles of pearmeow. Everything should work when running the scripts except for misc.sh, in which the user must be specified.
 
 Notes
 -----
