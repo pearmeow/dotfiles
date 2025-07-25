@@ -662,7 +662,8 @@ local globalkeys = gears.table.join(
 
 	-- Lock screen
 	awful.key({ modkey, "Shift" }, "l", function()
-		local cmd = 'i3lock -e --verif-text="" --wrong-text="" --noinput-text="" --lock-text=""'
+		local wallpaper_path = "~/dotfiles/wallpapers/pink_explosion_light_4k.png"
+		local cmd = 'i3lock -e --verif-text="" --wrong-text="" --noinput-text="" --lock-text="" -i ' .. wallpaper_path
 		awful.spawn.with_shell(cmd)
 	end, { description = "lock screen", group = "launcher" }),
 
