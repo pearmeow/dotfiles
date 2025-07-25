@@ -660,6 +660,12 @@ local globalkeys = gears.table.join(
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
+	-- Lock screen
+	awful.key({ modkey, "Shift" }, "l", function()
+		local cmd = 'i3lock -e --verif-text="" --wrong-text="" --noinput-text="" --lock-text=""'
+		awful.spawn.with_shell(cmd)
+	end, { description = "lock screen", group = "launcher" }),
+
 	-- Rofi
 	awful.key({ modkey }, "p", function()
 		awful.spawn.with_shell("~/.config/rofi/launchers/type-6/launcher.sh")
@@ -886,17 +892,15 @@ end)
 -- end)
 
 -- }}}
--- XDG autostart
+-- XDG autostart: runs all programs in /etc/xdg/autostart/
 awful.spawn.with_shell(
 	'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;'
 		.. 'xrdb -merge <<< "awesome.started:true";'
 		.. 'dex --environment Awesome --autostart --search-paths "${XDG_CONFIG_HOME:-$HOME/.config}/autostart:${XDG_CONFIG_DIRS:-/etc/xdg}/autostart";'
 )
 
--- Autostart script & commands to run on startup
--- Windows don't go to correct tags
--- awful.spawn.with_shell("~/.config/awesome/scripts/autorun.sh")
 -- Need to run changevol twice and with a delay because of wireplumber issues
+awful.spawn.with_shell("./scripts/autorun.sh")
 awful.spawn.easy_async("sleep 1", changeVol)
 changeVol()
 changeBrightness()

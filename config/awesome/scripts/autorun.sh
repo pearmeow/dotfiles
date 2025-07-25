@@ -7,7 +7,4 @@ run() {
   fi
 }
 
-# function doesn't work with this arg
-steam -system-composer
-run "brave"
-run "vesktop"
+run xss-lock --transfer-sleep-lock -- i3lock -e --verif-text="" --wrong-text="" --noinput-text="" --lock-text="" --nofork
