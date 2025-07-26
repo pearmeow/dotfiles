@@ -77,8 +77,8 @@ packages+=" bluez bluez-utils"
 # Audio
 packages+=" pipewire-alsa pipewire-pulse"
 
-# Lock  TODO: change lock mechanism
-# packages+=" xss-lock i3lock"
+# Lock
+packages+=" xss-lock"
 
 # Fonts
 packages+=" noto-fonts-cjk noto-fonts-emoji noto-fonts ttf-jetbrains-mono-nerd ttf-roboto"
