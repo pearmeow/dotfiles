@@ -60,7 +60,7 @@ mainbox {
 imagebox {
     padding:                     20px;
     background-color:            transparent;
-    background-image:            url("~/dotfiles/wallpapers/pink_explosion_darker_4k.png", height);
+    background-image:            url("~/dotfiles/wallpapers/black-hole.png", height);
     orientation:                 vertical;
     children:                    [ "inputbar", "dummy", "mode-switcher" ];
 }
