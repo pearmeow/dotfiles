@@ -818,6 +818,7 @@ awful.rules.rules = {
 				"veromix",
 				"xtightvncviewer",
 				"org.gnome.Nautilus",
+				"screenkey",
 			},
 
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -826,6 +827,7 @@ awful.rules.rules = {
 				"Event Tester", -- xev.
 				"Steam Settings",
 				"zoom",
+				"screenkey",
 			},
 			role = {
 				"AlarmWindow", -- Thunderbird's calendar.
