@@ -4,10 +4,10 @@ BasedOnStyle: Google
 IndentWidth: 4
 ---
 Language: Cpp
-DerivePointerAlignment: false
+DerivePointerAlignment: False
 PointerAlignment: Left
 ColumnLimit: 115
-AllowShortFunctionsOnASingleLine: Empty
-IndentAccessModifiers: false
+AllowShortFunctionsOnASingleLine: None
+IndentAccessModifiers: False
 AccessModifierOffset: -4
 ---
