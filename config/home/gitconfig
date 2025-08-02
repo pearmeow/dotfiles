@@ -5,6 +5,9 @@
 	pager = delta
 	excludesfile = ~/.gitignore_global
 
+[commit]
+	template = ~/.gitmessage
+
 [init]
 	defaultBranch = main
 
