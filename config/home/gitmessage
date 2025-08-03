@@ -1,15 +1,14 @@
+
 # <50 chars & no period ##### 50 chars is here:  #
 # Format: <type>[optional scope]: <description>
 # Example: feat!(parser): add ability to parse arrays
 
-# [optional body]
-# [optional footer(s)]
-# Blank line between title and body below
-
+# ^ Blank line between title and body
 # Body: Explain *what* and *why* (not *how*).
 # Start writing directly beneath the next line
 # Wrap at 72 chars. ################################## which is here:  #
 
+# ^ [optional body]
 # At the end: Include Co-authored-by for all contributors.
 # Include at least one empty line before it.
 # Example: Co-authored-by: name <user@users.noreply.github.com>
@@ -21,6 +20,7 @@
 # has a ! after the type/scope (MAJOR in SemVer).
 # A BREAKING CHANGE can be part of commits of any type.
 
+# ^ [optional footer(s)]
 # types other than fix: and feat: are allowed, for example
 # build:, chore:, ci:, docs:, style:,
 # refactor:, perf:, test:, and others.
