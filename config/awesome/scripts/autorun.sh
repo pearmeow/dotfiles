@@ -8,3 +8,4 @@ run() {
 }
 
 run xss-lock --transfer-sleep-lock -- i3lock -e --verif-text="" --wrong-text="" --noinput-text="" --lock-text="" -i "/home/pearmeow/dotfiles/wallpapers/pink_explosion_light_4k.png"
+run unclutter
