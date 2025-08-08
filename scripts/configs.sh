@@ -47,6 +47,10 @@ sudo cp ../config/misc/49-rootpw-global.rules /etc/polkit-1/rules.d/
 # Configure keyboard behavior
 sudo cp ../config/misc/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
 
+# Configure keyboard for zsa
+sudo mkdir -p /etc/udev/rules.d/
+sudo cp ../config/misc/50-zsa.rules /etc/udev/rules.d/
+
 # Configure wifi card to not shut down randomly
 sudo cp ../config/misc/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
 
