@@ -1,7 +1,5 @@
 [font]
-size = 9
-# Desktop
-# size = 11.5
+size = 11.5
 normal = { family = "JetBrainsMonoNerdFontMono", style = "Regular" }
 
 [general]
