@@ -16,7 +16,7 @@ packages+=" make gcc unzip wget openssh man"
 packages+=" gdb"
 
 # Terminal emulator
-packages+=" alacritty"
+packages+=" wezterm"
 
 # File manager
 packages+=" nautilus"
