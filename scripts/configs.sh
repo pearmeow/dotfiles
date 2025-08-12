@@ -7,15 +7,15 @@
 
 # Copy files that belong in the home directory to ~/
 mkdir -p ~/repos
-cp ../config/home/zshrc ~/.zshrc
 cp ../config/home/clang-format ~/.clang-format
 cp ../config/home/gitignore_global ~/.gitignore_global
 cp ../config/home/gitconfig ~/.gitconfig
 cp ../config/home/gitmessage ~/.gitmessage
+cp ../config/home/wezterm.lua ~/.wezterm.lua
+cp ../config/home/zshrc ~/.zshrc
 cp -r ../config/home/templates ~/
 
 # Copy configs that live in .config into their respective places
-cp -r ../config/alacritty ~/.config/
 cp -r ../config/awesome ~/.config/
 cp -r ../config/mpd ~/.config/
 cp -r ../config/ncmpcpp ~/.config/
