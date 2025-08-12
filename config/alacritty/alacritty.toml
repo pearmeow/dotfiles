@@ -1,9 +1,0 @@
-[font]
-size = 11.5
-normal = { family = "JetBrainsMonoNerdFontMono", style = "Regular" }
-
-[general]
-import = [ "~/.config/alacritty/themes/snazzy.toml"]
-
-[window]
-padding = {x = 5, y = 0}
