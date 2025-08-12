@@ -56,7 +56,7 @@ end
 beautiful.init("~/.config/awesome/desktop/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-local terminal = "alacritty"
+local terminal = "wezterm"
 -- local editor = os.getenv("EDITOR") or "vim"
 -- local editor_cmd = terminal .. " -e " .. editor
 
