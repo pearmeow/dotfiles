@@ -13,9 +13,10 @@ config.font = wezterm.font("JetBrainsMonoNerdFontMono")
 -- or, changing the font size and color scheme.
 config.font_size = 19
 config.color_scheme = "Dracula (Official)"
-config.max_fps = 240
+config.max_fps = 120
 config.enable_tab_bar = false
 config.front_end = "WebGpu"
+config.window_decorations = "RESIZE"
 config.window_padding = {
 	left = 3,
 	right = 3,
