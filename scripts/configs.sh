@@ -13,6 +13,7 @@ cp ../config/home/gitconfig ~/.gitconfig
 cp ../config/home/gitmessage ~/.gitmessage
 cp ../config/home/wezterm.lua ~/.wezterm.lua
 cp ../config/home/zshrc ~/.zshrc
+cp ../config/home/zshenv ~/.zshenv
 cp -r ../config/home/templates ~/
 
 # Copy configs that live in .config into their respective places
