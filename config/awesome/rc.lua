@@ -51,9 +51,9 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- Laptop
-beautiful.init("~/.config/awesome/laptop/theme.lua")
+-- beautiful.init("~/.config/awesome/laptop/theme.lua")
 -- Desktop
--- beautiful.init("~/.config/awesome/desktop/theme.lua")
+beautiful.init("~/.config/awesome/desktop/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "wezterm"
@@ -301,8 +301,13 @@ local battery_icon = wibox.widget({
 })
 
 local battery_bar = awful.widget.watch("acpi", 3, function(widget, stdout)
+	if stdout == "" then
+		local text = "[▓▓▓▓▓▓▓▓▓▓] ∞%"
+		widget:set_markup(text)
+		return
+	end
 	for _ in stdout:gmatch("unavailable") do
-		text = "[▓▓▓▓▓▓▓▓▓▓] ∞%"
+		local text = "[▓▓▓▓▓▓▓▓▓▓] ∞%"
 		widget:set_markup(text)
 		return
 	end
