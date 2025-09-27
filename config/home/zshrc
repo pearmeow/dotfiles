@@ -13,6 +13,14 @@ export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 export GEM_HOME="$(gem env user_gemhome 2>/dev/null)"
 export PATH="$PATH:$GEM_HOME/bin"
 
+# ruby
+FPATH=~/.rbenv/completions:"$FPATH"
+
+autoload -U compinit
+compinit
+
+eval "$(rbenv init - --no-rehash zsh)"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -131,3 +139,4 @@ alias neofetch="fastfetch --logo arch2"
 alias rm="rm -I"
 alias man="batman"
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
+
