@@ -6,7 +6,9 @@ local GioUnix = lgi.GioUnix
 if not Gio.UnixInputStream and GioUnix then
 	Gio.UnixInputStream = GioUnix.InputStream
 	Gio.UnixOutputStream = GioUnix.OutputStream
-end -- If LuaRocks is installed, make sure that packages installed through it are
+end
+
+-- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, "luarocks.loader")
 -- Standard awesome library
