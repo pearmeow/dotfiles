@@ -2,7 +2,11 @@
 
 # Symlinking folders & placing files
 
-DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config"
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+DOTFILES="$REPO/config"
+
+# Initialize submodules if not done so already
+git -C "$REPO" submodule update --init --recursive
 
 # Set background image
 # feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
@@ -24,6 +28,7 @@ ln -sf "$DOTFILES/mpd" ~/.config/mpd
 ln -sf "$DOTFILES/ncmpcpp" ~/.config/ncmpcpp
 ln -sf "$DOTFILES/picom" ~/.config/picom
 ln -sf "$DOTFILES/rofi" ~/.config/rofi
+ln -sf "$DOTFILES/nvim" ~/.config/nvim
 
 # keyd
 sudo ln -sf "$DOTFILES/keyd/default.conf" /etc/keyd/default.conf
