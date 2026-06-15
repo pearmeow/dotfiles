@@ -1,71 +1,59 @@
 #!/bin/bash
 
-# Copying folders & placing files
+# Symlinking folders & placing files
+
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config"
 
 # Set background image
 # feh --bg-scale ~/dotfiles/wallpapers/katana.jpg
 
-# Copy files that belong in the home directory to ~/
 mkdir -p ~/repos
-cp ../config/home/clang-format ~/.clang-format
-cp ../config/home/gitignore_global ~/.gitignore_global
-cp ../config/home/gitconfig ~/.gitconfig
-cp ../config/home/gitmessage ~/.gitmessage
-cp ../config/home/wezterm.lua ~/.wezterm.lua
-cp ../config/home/zshrc ~/.zshrc
-cp -r ../config/home/templates ~/
 
-# Copy configs that live in .config into their respective places
-cp -r ../config/awesome ~/.config/
-cp -r ../config/mpd ~/.config/
-cp -r ../config/ncmpcpp ~/.config/
-cp -r ../config/picom ~/.config/
-cp -r ../config/rofi ~/.config/
+# Home directory files
+ln -sf "$DOTFILES/home/clang-format" ~/.clang-format
+ln -sf "$DOTFILES/home/gitignore_global" ~/.gitignore_global
+ln -sf "$DOTFILES/home/gitconfig" ~/.gitconfig
+ln -sf "$DOTFILES/home/gitmessage" ~/.gitmessage
+ln -sf "$DOTFILES/home/wezterm.lua" ~/.wezterm.lua
+ln -sf "$DOTFILES/home/zshrc" ~/.zshrc
+ln -sf "$DOTFILES/home/templates" ~/templates
 
-# Copy keyd config to where it belongs
-sudo cp ../config/keyd/default.conf /etc/keyd/
+# .config directories
+ln -sf "$DOTFILES/awesome" ~/.config/awesome
+ln -sf "$DOTFILES/mpd" ~/.config/mpd
+ln -sf "$DOTFILES/ncmpcpp" ~/.config/ncmpcpp
+ln -sf "$DOTFILES/picom" ~/.config/picom
+ln -sf "$DOTFILES/rofi" ~/.config/rofi
 
-# Copy sddm configs into their respective places
+# keyd
+sudo ln -sf "$DOTFILES/keyd/default.conf" /etc/keyd/default.conf
+
+# sddm
 sudo mkdir -p /usr/share/sddm/themes/
-sudo cp -r ../config/sddm/where-is-my-sddm-theme/ /usr/share/sddm/themes/
+sudo ln -sf "$DOTFILES/sddm/where-is-my-sddm-theme" /usr/share/sddm/themes/where-is-my-sddm-theme
 sudo mkdir -p /etc/sddm.conf.d/
-sudo cp ../config/sddm/default.conf /etc/sddm.conf.d/
+sudo ln -sf "$DOTFILES/sddm/default.conf" /etc/sddm.conf.d/default.conf
 
-# Copy ssh config into .ssh directory
+# ssh
 mkdir -p ~/.ssh
-cp ../config/ssh/config ~/.ssh/
+chmod 700 ~/.ssh
+ln -sf "$DOTFILES/ssh/config" ~/.ssh/config
+chmod 600 "$DOTFILES/ssh/config"
 
-# Configure mouse
-sudo cp ../config/misc/00-keyboard.conf /etc/X11/xorg.conf.d/
-
-# Copy amdgpu power rules to fix flickering
-sudo cp ../config/misc/30-amdgpu-power.rules /etc/udev/rules.d
-
-# Configure polkit to use root password
-sudo cp ../config/misc/49-rootpw-global.rules /etc/polkit-1/rules.d/
-
-# Configure keyboard behavior
-sudo cp ../config/misc/50-libinputsnippit.conf /etc/X11/xorg.conf.d/
-
-# Configure keyboard for zsa
+# misc system configs
+sudo ln -sf "$DOTFILES/misc/00-keyboard.conf" /etc/X11/xorg.conf.d/00-keyboard.conf
+sudo ln -sf "$DOTFILES/misc/30-amdgpu-power.rules" /etc/udev/rules.d/30-amdgpu-power.rules
+sudo ln -sf "$DOTFILES/misc/49-rootpw-global.rules" /etc/polkit-1/rules.d/49-rootpw-global.rules
+sudo ln -sf "$DOTFILES/misc/50-libinputsnippit.conf" /etc/X11/xorg.conf.d/50-libinputsnippit.conf
 sudo mkdir -p /etc/udev/rules.d/
-sudo cp ../config/misc/50-zsa.rules /etc/udev/rules.d/
-
-# Configure wifi card to not shut down randomly
-sudo cp ../config/misc/default-wifi-powersave-on.conf /etc/NetworkManager/conf.d/
-
-# Add keyd fix for trackpad interfering with input
-sudo cp ../config/misc/local-overrides.quirks /etc/libinput/
-
-# Make dhcpcd run in the background to boot faster
+sudo ln -sf "$DOTFILES/misc/50-zsa.rules" /etc/udev/rules.d/50-zsa.rules
+sudo ln -sf "$DOTFILES/misc/default-wifi-powersave-on.conf" /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf
+sudo ln -sf "$DOTFILES/misc/local-overrides.quirks" /etc/libinput/local-overrides.quirks
 sudo mkdir -p /etc/systemd/system/dhcpcd@.service.d/
-sudo cp ../config/misc/nowait.conf /etc/systemd/system/dhcpcd@.service.d/
-
-# Copy nvidia hook into pacman
+sudo ln -sf "$DOTFILES/misc/nowait.conf" /etc/systemd/system/dhcpcd@.service.d/nowait.conf
 sudo mkdir -p /etc/pacman.d/hooks
-sudo cp ../config/misc/nvidia.hook /etc/pacman.d/hooks/
+sudo ln -sf "$DOTFILES/misc/nvidia.hook" /etc/pacman.d/hooks/nvidia.hook
 
-# Copy steam desktop file to its directory
+# Steam desktop file
 mkdir -p ~/.local/share/applications/
-cp ../config/misc/steam.desktop ~/.local/share/applications/
-
+ln -sf "$DOTFILES/misc/steam.desktop" ~/.local/share/applications/steam.desktop
