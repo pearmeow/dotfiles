@@ -1,5 +1,7 @@
 [user]
+	email = perryhuang2015@gmail.com
 	name = Perry Huang
+	signingkey = A09D0071464F64D4
 [core]
 	editor = nvim
 	pager = delta
@@ -7,6 +9,10 @@
 
 [commit]
 	template = ~/.gitmessage
+	gpgsign = true
+
+[tag]
+	gpgSign = true
 
 [init]
 	defaultBranch = main
@@ -36,3 +42,8 @@
 
 [merge]
 	conflictStyle = zdiff3
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
